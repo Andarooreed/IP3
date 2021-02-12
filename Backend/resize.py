@@ -33,23 +33,32 @@ root_folder = "ML_Core/User_Images/"
 
 path = root_folder + source_folder
 
-print(path)
+#print(path)
 
 images = os.listdir(path)
 
+print("Normalising Images")
+
+try:
+    os.mkdir(path + "/thumbs")
+except:
+    pass
 
 
 def normalise():
     for item in images:
         if os.path.isfile(path + item):
+            print(path)
             im = Image.open(path + item)
             f, e = os.path.splitext(path + item)
+            print(f)
             # Thumb Me
             image_thumb = im.resize(size_thumb, Image.ANTIALIAS)
-            image_thumb.save(f + '_thumb.png', 'PNG', quality=90)
+            image_thumb.save(path + "thumbs/" + item + '_thumb.png', 'PNG', quality=90)
             # Downscaled image
             image_resized = im.resize((size_x, size_y), Image.ANTIALIAS)
             image_resized.save(f + e , 'JPEG', quality=90)
+            print("Image '" + f + "' Completed.")
 
 normalise()
 
