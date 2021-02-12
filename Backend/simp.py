@@ -23,7 +23,7 @@ except:
     limit = 5
 
 print(os.getcwd())
-os.chdir("ML_Core/User_Images")
+os.chdir("Backend/ML_Core/User_Images")
 print(os.getcwd())
 
 response = simp.simple_image_download
