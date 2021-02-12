@@ -1,0 +1,20 @@
+Couple folders and that to organise initial development for back end systems.
+
+ML_Core
+    - Contains primary stuff needed for the Machine Learning system
+    User_images
+        - Store place for current test images, will eventually be moved to wherever is suitable and referenced via DB
+        - Contains test folders for a number of users
+        simple_images
+            - Default place that the system we're using to gather test images drops to
+Server
+    - Area for initial server building, will obviously be sorted onto apache or whatever Python uses some point... as will everything
+
+Config.ini
+    - Wee config file
+
+scratchpad.py
+    - General scratch file, no real use
+
+simp.py
+    - Script for gathering test images: python simp.py [search term] [amount of images]
