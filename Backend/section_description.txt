@@ -2,7 +2,7 @@ Couple folders and that to organise initial development for back end systems.
 
 ML_Core
     - Contains primary stuff needed for the Machine Learning system
-    User_images
+    User_images (git ignores)
         - Store place for current test images, will eventually be moved to wherever is suitable and referenced via DB
         - Contains test folders for a number of users
         simple_images
@@ -20,4 +20,4 @@ simp.py
     - Script for gathering test images: python simp.py [search term] [amount of images]
 
 resize.py
-    - batch resize photos
+    - batch resize photos: python resize.py [folder name] [x size] [y size]
