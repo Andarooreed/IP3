@@ -51,8 +51,7 @@ def normalise():
             print(path)
             im = Image.open(path + item)
             f, e = os.path.splitext(path + item)
-            print(f)
-            # Thumb Me
+           # Thumb Me
             image_thumb = im.resize(size_thumb, Image.ANTIALIAS)
             image_thumb.save(path + "thumbs/" + item + '_thumb.png', 'PNG', quality=90)
             # Downscaled image
