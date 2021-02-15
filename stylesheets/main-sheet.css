@@ -1,7 +1,3 @@
-html {
-    background-color: #055757;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -19,4 +15,14 @@ h1 {
 
 .button-two {
     background-color: #17F1D8;
+}
+
+#override {
+    background-color: #08ED9B;
+    border-color: #08ED9B;
+}
+
+#override:hover {
+    background-color: grey;
+    border-color: grey;
 }
