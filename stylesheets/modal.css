@@ -36,7 +36,7 @@
   /* Close button on hover */
   .close:hover,
   .close:focus {
-    color: red;
+    color: White;
     cursor: pointer;
   }
   
