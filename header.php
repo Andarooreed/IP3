@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="stylesheets/main-sheet.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/modal-test.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/modal.css" />
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
