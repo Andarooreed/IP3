@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +30,16 @@
         <div class="wrapper">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><button onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+                <?php
+                if (isset($_SESSION["id"])) { ?>
+                    <li><a href="includes/logout.inc.php"><button>Logout</button></a></li>
+                <?php } else {
+                ?>
+                    <li><button onclick="document.getElementById('loginmodal').style.display='block'">Login</button></li>
+                    <li><button onclick="document.getElementById('signupmodal').style.display='block'">Sign Up</button></li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
     </nav>
