@@ -3,9 +3,9 @@ include_once 'header.php';
 ?>
 
 <?php
-include_once 'login-modal.php';
-include_once 'signup-modal.php';
-include_once 'success-modal.php';
+include_once 'modals/login-modal.php';
+include_once 'modals/signup-modal.php';
+include_once 'modals/success-modal.php';
 ?>
 
 <?php

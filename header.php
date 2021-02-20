@@ -31,7 +31,7 @@ session_start();
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <?php
-                if (isset($_SESSION["id"])) { ?>
+                if (isset($_SESSION["userid"])) { ?>
                     <li><a href="includes/logout.inc.php"><button>Logout</button></a></li>
                 <?php } else {
                 ?>
