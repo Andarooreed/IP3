@@ -31,22 +31,22 @@
         echo "<p>Fill in all fields!</p>";
       }
       else if ($_GET["error"] == "invaliduid") {
-        echo "<p>Choose a proper username!</p>";
+        echo "<p>Username is invalid</p>";
       }
       else if ($_GET["error"] == "invalidemail") {
-        echo "<p>Choose a proper email!</p>";
+        echo "<p>Email is invalid</p>";
       }
       else if ($_GET["error"] == "passwordsdontmatch") {
-        echo "<p>Passwords doesn't match!</p>";
+        echo "<p>Passwords don't match</p>";
       }
       else if ($_GET["error"] == "stmtfailed") {
-        echo "<p>Something went wrong!</p>";
+        echo "<p>Something went wrong</p>";
       }
       else if ($_GET["error"] == "usernametaken") {
-        echo "<p>Username already taken!</p>";
+        echo "<p>Username already taken</p>";
       }
       else if ($_GET["error"] == "none") {
-        echo "<p>You have signed up!</p>";
+        echo "<p>You have signed up</p>";
       }
     }
   ?>
