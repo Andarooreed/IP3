@@ -90,7 +90,7 @@ function createUser($conn, $name, $email, $username, $pwd) {
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
-	header("location: ../index.php?error=none");
+	header("location: ../index.php?error=signup-none");
 	exit();
 }
 
@@ -126,7 +126,7 @@ function loginUser($conn, $username, $pwd) {
 		session_start();
 		$_SESSION["userid"] = $uidExists["usersId"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
-		header("location: ../index.php?error=none");
+		header("location: ../index.php?error=login-none");
 		exit();
 	}
 }

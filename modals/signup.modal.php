@@ -45,8 +45,25 @@
       else if ($_GET["error"] == "usernametaken") {
         echo "<p>Username already taken</p>";
       }
-      else if ($_GET["error"] == "none") {
-        echo "<p>You have signed up</p>";
+      else if ($_GET["error"] == "signup-none") {
+        ?>
+        <script>
+            $(document).ready(function() {
+                $('.signupalert').removeClass("hide");
+                $('.signupalert').addClass("show");
+                $('.signupalert').addClass("showAlert");
+                setTimeout(function() {
+                    $('.signupalert').addClass("hide");
+                    $('.signupalert').removeClass("show");
+                }, 5000); //hides the alert automatically after 5 seconds
+
+                $('.close-btn').click(function() {
+                    $('.signupalert').addClass("hide");
+                    $('.signupalert').removeClass("show");
+                });
+            });
+        </script>
+<?php
       }
     }
   ?>
