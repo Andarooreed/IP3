@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["IP3/WhatsInThePhotoAPI/WhatsInThePhotoAPI.csproj", "IP3/WhatsInThePhotoAPI/"]
-RUN dotnet restore "IP3/WhatsInThePhotoAPI/WhatsInThePhotoAPI.csproj"
+COPY ["WhatsInThePhotoAPI.csproj", "."]
+RUN dotnet restore "./WhatsInThePhotoAPI.csproj"
 COPY . .
-WORKDIR "/src/IP3/WhatsInThePhotoAPI"
+WORKDIR "/src/."
 RUN dotnet build "WhatsInThePhotoAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
