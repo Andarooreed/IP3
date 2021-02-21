@@ -1,0 +1,18 @@
+﻿version: '3.4'
+
+services:
+  webapp:
+    build:
+      context: ./dotnet
+      dockerfile: Dockerfile
+    expose:
+      - "80"
+
+  proxy:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    links:
+      - app
