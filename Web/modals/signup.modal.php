@@ -50,10 +50,18 @@
             $('.signupalert').addClass("hide");
             $('.signupalert').removeClass("show");
           }, 5000); //hides the alert automatically after 5 seconds
+          setTimeout(function() {
+            $('.signupalert').removeClass("hide");
+            $('.loginalert').removeClass("showAlert");
+          }, 6000); //hides the alert in the background automatically after 6 seconds
 
           $('.close-btn').click(function() {
             $('.signupalert').addClass("hide");
             $('.signupalert').removeClass("show");
+            setTimeout(function() {
+            $('.signupalert').removeClass("hide");
+            $('.signupalert').removeClass("showAlert");
+          }, 6000); //hides the alert in the background automatically after 6 seconds
           });
         });
       </script>
@@ -69,10 +77,18 @@
             $('.logoutalert').addClass("hide");
             $('.logoutalert').removeClass("show");
           }, 5000); //hides the alert automatically after 5 seconds
+          setTimeout(function() {
+            $('.logoutalert').removeClass("hide");
+            $('.logoutalert').removeClass("showAlert");
+          }, 6000); //hides the alert in the background automatically after 6 seconds
 
           $('.close-btn').click(function() {
             $('.logoutalert').addClass("hide");
             $('.logoutalert').removeClass("show");
+            setTimeout(function() {
+            $('.logoutpalert').removeClass("hide");
+            $('.logoutalert').removeClass("showAlert");
+          }, 6000); //hides the alert in the background automatically after 6 seconds
           });
         });
       </script>

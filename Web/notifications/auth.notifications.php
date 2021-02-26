@@ -1,4 +1,4 @@
-<div class="signupalert hide">
+<div class="signupalert">
     <span class="fas fa-user-circle"></span>
     <span class="msg">Account created</span>
     <span class="close-btn">
@@ -6,7 +6,7 @@
     </span>
 </div>
 
-<div class="loginalert hide">
+<div class="loginalert">
     <span class="fas fa-lock-open"></span>
     <span class="msg">Login successful</span>
     <span class="close-btn">
@@ -14,7 +14,7 @@
     </span>
 </div>
 
-<div class="logoutalert hide">
+<div class="logoutalert">
     <span class="fas fa-lock"></span>
     <span class="msg">Logout successful</span>
     <span class="close-btn">
