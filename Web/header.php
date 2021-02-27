@@ -29,7 +29,7 @@ session_start();
     <!-- JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <title>Image identifier - Login</title>
+    <title>What's in the box?</title>
 </head>
 
 <body>
