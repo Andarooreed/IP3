@@ -36,7 +36,9 @@ session_start();
     <nav>
         <div class="wrapper">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <div class="nav-title">
+                <li><a href="index.php"><h3><strong>What's in the box?</strong></h3></a></li>
+                </div>
                 <?php
                 if (isset($_SESSION["userid"])) { ?>
                     <div class="account-buttons">

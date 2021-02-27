@@ -24,6 +24,20 @@ nav ul {
     display: inline;
   }
 
+  nav .nav-title {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  nav a {
+    color: #1FC2AF;
+  }
+
+  nav a:hover {
+    color: #055757;
+  }
+
 .account-buttons {
     float: right;
     margin-top: -5px;   

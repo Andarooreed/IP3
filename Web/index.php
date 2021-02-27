@@ -5,12 +5,19 @@ include_once 'modals/signup.modal.php';
 include_once 'notifications/auth.notifications.php';
 ?>
 
-<div class="wrapper">
-    <div class="title-center">
-        <h1><strong>What's in the box?</strong></h1>
-    </div>
-</div>
+<?php
+if (isset($_SESSION["userid"])) { ?>
 
+<?php } else {
+?>
+    <div class="wrapper">
+        <div class="title-center">
+            <h1><strong>What's in the box?</strong></h1>
+        </div>
+    </div>
+<?php
+}
+?>
 <?php
 include_once 'footer.php';
 ?>
