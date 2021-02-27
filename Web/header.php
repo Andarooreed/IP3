@@ -39,11 +39,15 @@ session_start();
                 <li><a href="index.php">Home</a></li>
                 <?php
                 if (isset($_SESSION["userid"])) { ?>
-                    <li><a href="includes/logout.inc.php"><button>Logout</button></a></li>
+                    <div class="account-buttons">
+                        <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
+                    </div>
                 <?php } else {
                 ?>
-                    <li><button onclick="document.getElementById('loginmodal').style.display='block'">Login</button></li>
-                    <li><button onclick="document.getElementById('signupmodal').style.display='block'">Sign Up</button></li>
+                    <div class="account-buttons">
+                        <li><button onclick="document.getElementById('loginmodal').style.display='block'" class="button-one">Login</button></li>
+                        <li><button onclick="document.getElementById('signupmodal').style.display='block'" class="button-one">Sign Up</button></li>
+                    </div>
                 <?php
                 }
                 ?>

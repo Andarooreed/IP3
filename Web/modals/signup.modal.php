@@ -18,10 +18,10 @@
       <input type="password" placeholder="Enter Password" name="pwd">
       <input type="password" placeholder="Repeat password" name="pwdrepeat">
 
-      <button type="submit" name="submit">Create account</button>
+      <button type="submit" name="submit" class="button-one">Create account</button>
     </div>
     <div class="container">
-      <button type="button" onclick="document.getElementById('signupmodal').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('signupmodal').style.display='none'" class="cancelbtn button-one">Cancel</button>
     </div>
   </form>
   <?php
@@ -51,7 +51,6 @@
             $('.signupalert').removeClass("show");
           }, 5000); //hides the alert automatically after 5 seconds
           setTimeout(function() {
-            $('.signupalert').removeClass("hide");
             $('.loginalert').removeClass("showAlert");
           }, 6000); //hides the alert in the background automatically after 6 seconds
 
@@ -59,7 +58,6 @@
             $('.signupalert').addClass("hide");
             $('.signupalert').removeClass("show");
             setTimeout(function() {
-            $('.signupalert').removeClass("hide");
             $('.signupalert').removeClass("showAlert");
           }, 6000); //hides the alert in the background automatically after 6 seconds
           });
@@ -78,7 +76,6 @@
             $('.logoutalert').removeClass("show");
           }, 5000); //hides the alert automatically after 5 seconds
           setTimeout(function() {
-            $('.logoutalert').removeClass("hide");
             $('.logoutalert').removeClass("showAlert");
           }, 6000); //hides the alert in the background automatically after 6 seconds
 
@@ -86,7 +83,6 @@
             $('.logoutalert').addClass("hide");
             $('.logoutalert').removeClass("show");
             setTimeout(function() {
-            $('.logoutpalert').removeClass("hide");
             $('.logoutalert').removeClass("showAlert");
           }, 6000); //hides the alert in the background automatically after 6 seconds
           });
