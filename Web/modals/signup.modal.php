@@ -51,7 +51,7 @@
             $('.signupalert').removeClass("show");
           }, 5000); //hides the alert automatically after 5 seconds
           setTimeout(function() {
-            $('.loginalert').removeClass("showAlert");
+            $('.signupnalert').removeClass("showAlert");
           }, 6000); //hides the alert in the background automatically after 6 seconds
 
           $('.close-btn').click(function() {
