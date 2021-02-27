@@ -1,21 +1,20 @@
 /* success notification global attributes */
 
 .success {
-    background: #ffdb9b;
-    border-left: #ffa502;
-    color: #ce8500;
+    background: #1FC2AF;
+    color: #055757;
 }
 
 .success .close-btn {
-    background: #ffd080;
+    background: #1ba796;
 }
 
 .success .close-btn:hover {
-    background: #ffc766;
+    background: #1dad9d;
 }
 
 .success .close-btn .fa-times {
-    color: #ce8500;
+    color: #055757;
     font-size: 22px;
     line-height: 40px;
 }
@@ -25,7 +24,7 @@
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
     border-left: 8px solid;
@@ -42,7 +41,7 @@
 }
 
 .signupalert .msg {
-    padding: 0 20px;
+    padding: 0px 20px;
     font-size: 18px;
 }
 
@@ -63,7 +62,7 @@
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
     border-left: 8px solid;
@@ -100,7 +99,7 @@
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
     border-left: 8px solid;
