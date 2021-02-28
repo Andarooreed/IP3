@@ -1,0 +1,28 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: white
+}
+
+h1 {
+    font-family: roboto slab;
+    color: #1FC2AF;
+}
+
+.button-one {
+    background-color: #08ED9B;
+}
+
+.button-two {
+    background-color: #17F1D8;
+}
+
+#override {
+    background-color: #08ED9B;
+    border-color: #08ED9B;
+}
+
+#override:hover {
+    background-color: grey;
+    border-color: grey;
+}
