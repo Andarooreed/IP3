@@ -1,18 +1,19 @@
-﻿version: '3'
+version: '3.4'
 
 services:
-  app:
+  whatsinthephotoapi:
+    image: ${DOCKER_REGISTRY-}whatsinthephotoapi
     build:
-      context: ./dotnet
-      dockerfile: Dockerfile
-    expose:
-      - "80"
-
-  proxy:
-    build:
-      context: ./nginx
+      context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - 80:80
+  ngrok:
+    image: shkoliar/ngrok:latest
+    ports:
+      - 4551:4551
     links:
-      - app
+      - ${DOCKER_REGISTRY-}whatsinthephotoapi
+    environment:
+      - DOMAIN=whatsinthephotoapi
+      - PORT=80
