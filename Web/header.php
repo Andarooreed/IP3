@@ -29,21 +29,27 @@ session_start();
     <!-- JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <title>Image identifier - Login</title>
+    <title>What's in the box?</title>
 </head>
 
 <body>
     <nav>
         <div class="wrapper">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <div class="nav-title">
+                <li><a href="index.php"><h3><strong>What's in the box?</strong></h3></a></li>
+                </div>
                 <?php
                 if (isset($_SESSION["userid"])) { ?>
-                    <li><a href="includes/logout.inc.php"><button>Logout</button></a></li>
+                    <div class="account-buttons">
+                        <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
+                    </div>
                 <?php } else {
                 ?>
-                    <li><button onclick="document.getElementById('loginmodal').style.display='block'">Login</button></li>
-                    <li><button onclick="document.getElementById('signupmodal').style.display='block'">Sign Up</button></li>
+                    <div class="account-buttons">
+                        <li><button onclick="document.getElementById('loginmodal').style.display='block'" class="button-one">Login</button></li>
+                        <li><button onclick="document.getElementById('signupmodal').style.display='block'" class="button-one">Sign Up</button></li>
+                    </div>
                 <?php
                 }
                 ?>
