@@ -43,15 +43,17 @@ session_start();
                 </div>
                 <?php
                 if (isset($_SESSION["userid"])) {; ?>
-                    <div class="account-buttons">
+                    <div class="nav-right">
                     <div class="welcome-message">
                         <li><h4>Welcome <?php echo $_SESSION["useruid"] ?></h4></li>
                     </div>
                         <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
                     </div>
+
+
                 <?php } else {
                 ?>
-                    <div class="account-buttons">
+                    <div class="nav-right">
                         <li><button onclick="document.getElementById('loginmodal').style.display='block'" class="button-one">Login</button></li>
                         <li><button onclick="document.getElementById('signupmodal').style.display='block'" class="button-one">Sign Up</button></li>
                     </div>
