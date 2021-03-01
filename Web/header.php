@@ -37,11 +37,16 @@ session_start();
         <div class="wrapper">
             <ul>
                 <div class="nav-title">
-                <li><a href="index.php"><h3><strong>What's in the box?</strong></h3></a></li>
+                    <li><a href="index.php">
+                            <h3><strong>What's in the box?</strong></h3>
+                        </a></li>
                 </div>
                 <?php
-                if (isset($_SESSION["userid"])) { ?>
+                if (isset($_SESSION["userid"])) {; ?>
                     <div class="account-buttons">
+                    <div class="welcome-message">
+                        <li><h4>Welcome <?php echo $_SESSION["useruid"] ?></h4></li>
+                    </div>
                         <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
                     </div>
                 <?php } else {

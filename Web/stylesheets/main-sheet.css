@@ -70,3 +70,9 @@ nav .button-one {
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
+
+.welcome-message {
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+}
