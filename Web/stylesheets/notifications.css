@@ -166,7 +166,7 @@
     pointer-events: none;
 }
 
-.credentialalert .fa-lock-open {
+.credentialalert .fa-user-circle {
     position: absolute;
     left: 20px;
     top: 50%;

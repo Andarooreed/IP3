@@ -15,8 +15,8 @@
 </div>
 
 <div class="credentialalert failure hide">
-    <span class="fas fa-lock-open"></span>
-    <span class="msg"><strong>User doesn't exist</strong></span>
+    <span class="fas fa-user-circle"></span>
+    <span class="msg"><strong>User credentials incorrect</strong></span>
     <span class="close-btn">
         <span class="fas fa-times"></span>
     </span>
