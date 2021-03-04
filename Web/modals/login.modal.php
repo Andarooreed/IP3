@@ -24,10 +24,32 @@
   if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {
       echo "<p>Fill in all fields</p>";
-    } else if ($_GET["error"] == "wronglogin") {
-      echo "<p>Wrong login</p>";
+    } else if ($_GET["error"] == "wronglogin") { ?>
+      <script>
+        $(document).ready(function() {
+          $('.credentialalert').removeClass("hide");
+          $('.credentialalert').addClass("show");
+          $('.credentialalert').addClass("showAlert");
+          setTimeout(function() {
+            $('.credentialalert').addClass("hide");
+            $('.credentialalert').removeClass("show");
+          }, 5000); //hides the alert automatically after 5 seconds
+          setTimeout(function() {
+            $('.credentialalert').removeClass("showAlert");
+          }, 6000); //hides the alert in the background automatically after 6 seconds
+
+          $('.close-btn').click(function() {
+            $('.credentialalert').addClass("hide");
+            $('.credentialalert').removeClass("show");
+            setTimeout(function() {
+              $('.credentialalert').removeClass("showAlert");
+            }, 6000); //hides the alert in the background automatically after 6 seconds
+          });
+        });
+      </script>
+    <?php
     } else if ($_GET["error"] == "login-none") {
-  ?>
+    ?>
       <script>
         $(document).ready(function() {
           $('.loginalert').removeClass("hide");
@@ -45,8 +67,8 @@
             $('.loginalert').addClass("hide");
             $('.loginalert').removeClass("show");
             setTimeout(function() {
-            $('.loginalert').removeClass("showAlert");
-          }, 6000); //hides the alert in the background automatically after 6 seconds
+              $('.loginalert').removeClass("showAlert");
+            }, 6000); //hides the alert in the background automatically after 6 seconds
           });
         });
       </script>
