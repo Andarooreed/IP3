@@ -73,7 +73,32 @@
         });
       </script>
   <?php
-    }
+    } else if ($_GET["error"] == "logout-none") {
+      ?>
+        <script>
+          $(document).ready(function() {
+            $('.logoutalert').removeClass("hide");
+            $('.logoutalert').addClass("show");
+            $('.logoutalert').addClass("showAlert");
+            setTimeout(function() {
+              $('.logoutalert').addClass("hide");
+              $('.logoutalert').removeClass("show");
+            }, 5000); //hides the alert automatically after 5 seconds
+            setTimeout(function() {
+              $('.logoutalert').removeClass("showAlert");
+            }, 6000); //hides the alert in the background automatically after 6 seconds
+  
+            $('.close-btn').click(function() {
+              $('.logoutalert').addClass("hide");
+              $('.logoutalert').removeClass("show");
+              setTimeout(function() {
+              $('.logoutalert').removeClass("showAlert");
+            }, 6000); //hides the alert in the background automatically after 6 seconds
+            });
+          });
+        </script>
+    <?php
+      }
   }
   ?>
 </div>
