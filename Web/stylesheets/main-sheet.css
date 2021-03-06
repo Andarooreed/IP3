@@ -2,11 +2,11 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: white;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 h1 {
-    font-family: roboto slab;
+    font-family: 'roboto slab';
     color: #1FC2AF;
 }
 
@@ -18,29 +18,29 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  
-  nav li {
-    display: inline;
-  }
+}
 
-  nav .nav-title {
+nav li {
+    display: inline;
+}
+
+nav .nav-title {
     margin: 0;
     padding: 0;
     position: absolute;
-  }
+}
 
-  nav a {
+nav a {
     color: #1FC2AF;
-  }
+}
 
-  nav a:hover {
+nav a:hover {
     color: #055757;
-  }
+}
 
 .nav-right {
     float: right;
-    margin-top: -5px;   
+    margin-top: -5px;
 }
 
 nav .button-one {
@@ -72,7 +72,7 @@ nav .button-one {
 }
 
 .welcome-message {
-  margin-top: 5px;
-  margin-right: 10px;
-  float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: left;
 }
