@@ -1,0 +1,96 @@
+/* The side navigation menu */
+
+.leftside-nav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 72px;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #055757;
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.7s;
+    /* 0.5 second transition effect to slide in the sidenav */
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.leftside-nav .title h3 {
+    position: absolute;
+    text-decoration: none;
+    top: 20px;
+    left: 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+
+/* The navigation menu links */
+
+.leftside-nav a {
+    color: #ffffff;
+    padding: 8px 8px 8px 23px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+.leftside-nav .button-one {
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.leftside-nav a:hover {
+    color: #1FC2AF;
+    padding-left: 25px;
+}
+
+
+/* Position and style the close button (top right corner) */
+
+.leftside-nav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.models {
+    margin: 30px 0 30px 0;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+    transition: margin-left 0.7s;
+    padding: 20px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* @media screen and (max-height: 450px) {
+    .model-nav {
+        padding-top: 60px;
+    }
+    .model-nav .title h3 {
+        font-size: 18px;
+    }
+    .model-nav a {
+        font-size: 18px;
+    }  
+  } */

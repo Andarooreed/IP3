@@ -2,11 +2,16 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: white;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 h1 {
     font-family: roboto slab;
+    color: #1FC2AF;
+}
+
+#open-nav:hover {
+    cursor: pointer;
     color: #1FC2AF;
 }
 
@@ -18,29 +23,42 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  
-  nav li {
-    display: inline;
-  }
+}
 
-  nav .nav-title {
+nav li {
+    display: inline;
+}
+
+nav .nav-title {
     margin: 0;
     padding: 0;
     position: absolute;
-  }
+}
 
-  nav a {
+nav a {
     color: #1FC2AF;
-  }
+}
 
-  nav a:hover {
+nav a:hover {
     color: #055757;
-  }
+}
 
 .nav-right {
     float: right;
-    margin-top: -5px;   
+    margin-top: -5px;
+}
+
+.nav-center {
+    font-size: 24px;
+    margin: 25px 0 0 0;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.nav-center li {
+    text-decoration: underline;
 }
 
 nav .button-one {
@@ -49,17 +67,19 @@ nav .button-one {
 
 .button-one {
     background-color: #08ED9B;
-    border-color: chartreuse;
+    border-color: #08ED9B;
     color: black;
 }
 
 .button-one:hover {
-    background-color: #055757;
-    border-color: #055757;
+    background-color: #07c280;
+    border-color: #07c280;
+    color: black;
 }
 
 .button-two {
     background-color: #17F1D8;
+    border: black;
 }
 
 .title-center {
@@ -72,7 +92,7 @@ nav .button-one {
 }
 
 .welcome-message {
-  margin-top: 5px;
-  margin-right: 10px;
-  float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: left;
 }

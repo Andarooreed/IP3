@@ -12,6 +12,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="stylesheets/main-sheet.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/modal.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/notifications.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/model-nav.css">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -38,15 +39,20 @@ session_start();
             <ul>
                 <div class="nav-title">
                     <li><a href="index.php">
-                            <h3><strong>What's in the box?</strong></h3>
+                            <h3><strong><i class="fas fa-box-open"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
                         </a></li>
                 </div>
                 <?php
                 if (isset($_SESSION["userid"])) {; ?>
-                    <div class="nav-right">
-                    <div class="welcome-message">
-                        <li><h4>Welcome <?php echo $_SESSION["useruid"] ?></h4></li>
+                    <div class="nav-center">
+                        
                     </div>
+                    <div class="nav-right">
+                        <div class="welcome-message">
+                            <li>
+                                <h4>Welcome <?php echo $_SESSION["useruid"] ?></h4>
+                            </li>
+                        </div>
                         <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
                     </div>
 

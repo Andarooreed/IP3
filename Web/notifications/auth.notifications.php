@@ -14,6 +14,14 @@
     </span>
 </div>
 
+<div class="credentialalert failure hide">
+    <span class="fas fa-user-circle"></span>
+    <span class="msg"><strong>User credentials incorrect</strong></span>
+    <span class="close-btn">
+        <span class="fas fa-times"></span>
+    </span>
+</div>
+
 <div class="logoutalert success hide">
     <span class="fas fa-lock"></span>
     <span class="msg"><strong>Logout successful</strong></span>
