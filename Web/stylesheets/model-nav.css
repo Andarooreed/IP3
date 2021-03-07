@@ -1,6 +1,6 @@
 /* The side navigation menu */
 
-.model-nav {
+.leftside-nav {
     height: 100%;
     /* 100% Full-height */
     width: 72px;
@@ -22,7 +22,7 @@
     white-space: nowrap;
 }
 
-.model-nav .title h3 {
+.leftside-nav .title h3 {
     position: absolute;
     text-decoration: none;
     top: 20px;
@@ -34,16 +34,16 @@
 
 /* The navigation menu links */
 
-.model-nav a {
+.leftside-nav a {
     color: #ffffff;
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 23px;
     text-decoration: none;
     font-size: 25px;
     display: block;
     transition: 0.3s;
 }
 
-.model-nav .button-one {
+.leftside-nav .button-one {
     float: right;
     margin-right: 30px;
 }
@@ -51,14 +51,15 @@
 
 /* When you mouse over the navigation links, change their color */
 
-.model-nav a:hover {
+.leftside-nav a:hover {
     color: #1FC2AF;
+    padding-left: 25px;
 }
 
 
 /* Position and style the close button (top right corner) */
 
-.model-nav .closebtn {
+.leftside-nav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;

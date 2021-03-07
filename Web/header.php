@@ -45,8 +45,7 @@ session_start();
                 <?php
                 if (isset($_SESSION["userid"])) {; ?>
                     <div class="nav-center">
-                        <li>Dashboard</li>
-                        <li>Account</li>
+                        
                     </div>
                     <div class="nav-right">
                         <div class="welcome-message">
