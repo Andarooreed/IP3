@@ -9,17 +9,20 @@ include_once 'notifications/auth.notifications.php';
 if (isset($_SESSION["userid"])) { ?>
     <div class="dashboard">
         <div class="model-nav" id="model-nav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="javascript:void(0)" class="closebtn" id="closebtn" style="display: none;" onclick="closeNav()">&times;</a>
             <div class="title">
-                <h3><strong>What's in the box?</strong></h3>
+                <h3><strong><i class="fas fa-box-open" id="open-nav" onclick="openNav()"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
             </div>
-            <a href="#">Models</a>
-            <a href="#">Models</a>
-            <a href="#">Models</a>
-            <a href="#">Models</a>
+            <div class="models" style="display: none;">
+                <a href="#">Models</a>
+                <a href="#">Models</a>
+                <a href="#">Models</a>
+                <a href="#">Models</a>
+            </div>
+            <button class="button-one" id="add-model-btn" style="display: none;">Add new</button>
         </div>
         <div id="main">
-            <button class="button-one" onclick="openNav()">open</button>
+
         </div>
     </div>
 <?php } else {

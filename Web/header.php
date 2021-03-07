@@ -39,11 +39,15 @@ session_start();
             <ul>
                 <div class="nav-title">
                     <li><a href="index.php">
-                            <h3><strong>What's in the box?</strong></h3>
+                            <h3><strong><i class="fas fa-box-open"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
                         </a></li>
                 </div>
                 <?php
                 if (isset($_SESSION["userid"])) {; ?>
+                    <div class="nav-center">
+                        <li>Dashboard</li>
+                        <li>Account</li>
+                    </div>
                     <div class="nav-right">
                         <div class="welcome-message">
                             <li>
