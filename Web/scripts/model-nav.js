@@ -14,11 +14,9 @@ function closeNav() {
 $("#open-nav").click(function() {
     $("#closebtn").fadeIn(500);
     $(".leftside-nav-wording").fadeIn(500);
-    $("#add-model-btn").fadeIn(500);
 });
 
 $("#closebtn").click(function() {
     $("#closebtn").fadeOut(500);
     $(".leftside-nav-wording").fadeOut(500);
-    $("#add-model-btn").fadeOut(500);
 });

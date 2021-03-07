@@ -18,7 +18,6 @@ if (isset($_SESSION["userid"])) { ?>
                 <a href="#"><i class="fas fa-images"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Models</span></a>
                 <a href="#"><i class="fas fa-cogs"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Settings</span></a>
             </div>
-            <button class="button-one" id="add-model-btn" style="display: none;">Add new</button>
         </div>
         <div id="main">
 
