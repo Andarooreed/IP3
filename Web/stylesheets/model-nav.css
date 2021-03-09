@@ -67,7 +67,7 @@
     margin-left: 50px;
 }
 
-.models {
+.left-nav-items {
     margin: 30px 0 30px 0;
 }
 
@@ -75,6 +75,7 @@
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 #main {
+    margin-left: 72px;
     transition: margin-left 0.7s;
     padding: 20px;
 }

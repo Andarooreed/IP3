@@ -9,10 +9,10 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="stylesheets/main-sheet.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/modal.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/notifications.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/model-nav.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main-sheet.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/modal.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/notifications.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/model-nav.css">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -44,9 +44,6 @@ session_start();
                 </div>
                 <?php
                 if (isset($_SESSION["userid"])) {; ?>
-                    <div class="nav-center">
-                        
-                    </div>
                     <div class="nav-right">
                         <div class="welcome-message">
                             <li>
@@ -55,7 +52,27 @@ session_start();
                         </div>
                         <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
                     </div>
-
+                    <div class="leftside-nav" id="leftside-nav">
+                        <a href="javascript:void(0)" class="closebtn" id="closebtn" style="display: none;" onclick="closeNav()">&times;</a>
+                        <div class="title">
+                            <h3><strong><i class="fas fa-box-open" id="open-nav" onclick="openNav()"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
+                        </div>
+                        <div class="left-nav-items">
+                            <a href="#"><i class="fas fa-columns"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Dashboard</span></a>
+                            <a href="#"><i class="fas fa-images"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Models</span></a>
+                            <a href="#"><i class="fas fa-cogs"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Settings</span></a>
+                        </div>
+                        <div class="left-nav-footer">
+                            paiowsjdfpisaoujef
+                        </div>
+                    </div>
+                    <div id="main">
+                        <?php
+                        if ($_GET["error"] == "login-none") {
+                            include_once 'tabs/models.php';
+                        }
+                        ?>
+                    </div>
 
                 <?php } else {
                 ?>
