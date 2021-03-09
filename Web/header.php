@@ -63,7 +63,7 @@ session_start();
                             <a href="#"><i class="fas fa-cogs"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Settings</span></a>
                         </div>
                         <div class="leftside-nav-footer">
-                        <a href="#"><i class="fas fa-info-circle"></i></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;About</span></a>
+                        <a href="#" onclick="document.getElementById('infomodal').style.display='block'"><i class="fas fa-info-circle"></i></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;About</span></a>
                         </div>
                     </div>
                     <div id="main">
