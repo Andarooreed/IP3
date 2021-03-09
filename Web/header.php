@@ -62,16 +62,14 @@ session_start();
                             <a href="#"><i class="fas fa-images"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Models</span></a>
                             <a href="#"><i class="fas fa-cogs"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Settings</span></a>
                         </div>
-                        <div class="left-nav-footer">
-                            paiowsjdfpisaoujef
+                        <div class="leftside-nav-footer">
+                        <a href="#"><i class="fas fa-info-circle"></i></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;About</span></a>
                         </div>
                     </div>
                     <div id="main">
-                        <?php
-                        if ($_GET["error"] == "login-none") {
-                            include_once 'tabs/models.php';
-                        }
-                        ?>
+                    <?php
+                        include_once './Tabs/models.php';
+                    ?>
                     </div>
 
                 <?php } else {

@@ -66,6 +66,12 @@ nav .button-one {
     margin-left: 5px;
 }
 
+.leftside-nav .leftside-nav-footer {
+    position: absolute;
+    padding-bottom: 25px;
+    bottom: 0;
+}
+
 .button-one {
     background-color: #08ED9B;
     border-color: #08ED9B;
