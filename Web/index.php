@@ -3,7 +3,6 @@ include_once 'header.php';
 include_once 'modals/login.modal.php';
 include_once 'modals/signup.modal.php';
 include_once 'notifications/auth.notifications.php';
-include_once 'form_get.php';
 ?>
 
 <?php

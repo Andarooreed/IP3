@@ -1,17 +1,27 @@
-<script>
-	  function submit_soap(){
-		var ip=$("#ip_address").val();
-		$.get("form_get.php",{ip:ip},
-		function(data){
-		  $("#json_response").html(data);
-		});
-	}
-	</script>
+<?php
+$arrContextOptions = array(
+	"ssl" => array(
+		"verify_peer" => false,
+		"verify_peer_name" => false,
+	),
+);
 
-<h3>Send HTTP Get Request using PHP</h3>
-     <form>
-     Get Models : <input name="models" id="models" type="text" /><br />
-      <input type="button" value="Submit" onclick="submit_soap()"/>
-    </form>
-       <br>-----------
-	  <div id="json_response"></div>
+$response = file_get_contents("https://localhost:44317/api/MachineModel", false, stream_context_create($arrContextOptions));
+
+$json_array=json_decode($response,true); 
+ function display_array_recursive($json_rec){
+		if($json_rec){
+			foreach($json_rec as $key=> $value){
+				if(is_array($value)){
+					display_array_recursive($value);
+					echo '<br>';
+				}else{
+					echo $key.': '.$value.'<br>';
+				}	
+			}	
+		}
+	}
+	?>
+	<div class=model-info-test-display>
+	<?php display_array_recursive($json_array); ?>
+	</div>	

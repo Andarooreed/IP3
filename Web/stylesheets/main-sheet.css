@@ -103,3 +103,8 @@ nav .button-one {
     margin-right: 10px;
     float: left;
 }
+
+.model-info-test-display {
+    padding-top: 50px;
+    font-size: 36;
+}
