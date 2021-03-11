@@ -25,11 +25,10 @@ namespace WhatsInThePhotoAPI.Controllers
 
         private readonly IImageFileWriter _imageFileWriter;
 
-
-        private readonly ILogger<ObjectDetectionController> _logger;
+        private readonly ILogger<MachineModelController> _logger;
 
         public MachineModelController(
-            ILogger<ObjectDetectionController> logger, IImageFileWriter imageFileWriter)
+            ILogger<MachineModelController> logger, IImageFileWriter imageFileWriter)
         {
             //Get injected dependencies
             _logger = logger;
@@ -80,9 +79,9 @@ namespace WhatsInThePhotoAPI.Controllers
 
                 string combinedCommand = $"{ScriptLocation} {modelPath} {imagePath}";
 
-                string returnvalue = MLStuff.ExecutePythonScript(combinedCommand);
+                string returnValue = PythonScript.ExecutePythonScript(combinedCommand);
 
-                switch (returnvalue.ToLower())
+                switch (returnValue.ToLower())
                 {
                     case "1":
                         Console.WriteLine("Image category 1");
@@ -91,14 +90,14 @@ namespace WhatsInThePhotoAPI.Controllers
                         Console.WriteLine("Image category 0");
                         break;
                     default:
-                        Console.WriteLine(returnvalue);
+                        Console.WriteLine(returnValue);
                         break;
                 }
 
                 //dynamic testFunction = _scope.GetVariable("test_func");
                 //dynamic result = testFunction(imagePath, modelPath);
 
-                return Ok(returnvalue);
+                return Ok(returnValue);
             }
             catch (Exception e)
             {

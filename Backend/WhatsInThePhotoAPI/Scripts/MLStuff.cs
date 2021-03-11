@@ -3,25 +3,11 @@ using System.Diagnostics;
 
 namespace WhatsInThePhotoAPI.Scripts
 {
-    /// <summary>
-    ///     Machine Learning C# - Python
-    /// </summary>
-    public static class MLStuff
+    /// <summary> C# Python Interpreter, executes python scripts </summary>
+    public static class PythonScript
     {
         private static readonly string _pythonExePath =
             @"C:\Users\Jargar\AppData\Local\Programs\Python\Python38\python.exe";
-
-
-        private static string imagePathName =
-            @"C:\Users\Jargar\Source\Repos\Andarooreed\IP3\Backend\WhatsInThePhotoAPI\TestImages\testimage1.jpeg";
-
-        /// <summary>
-        ///     ML Sharp Python class constructor
-        /// </summary>
-        /// <param name="exePythonPath">Python EXE file path</param>
-        static MLStuff()
-        {
-        }
 
         // <summary> Execute Python script file </summary>
         /// <param name="filePythonScript">Python script file and input parameter(s)</param>
