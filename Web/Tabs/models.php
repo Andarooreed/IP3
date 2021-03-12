@@ -25,4 +25,4 @@ $json_array=json_decode($response,true);
 	?>
 	<div class=model-info-test-display>
 	<?php display_array_recursive($json_array); ?>
-	</div>	
+	</div>
