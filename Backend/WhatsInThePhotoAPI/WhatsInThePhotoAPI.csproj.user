@@ -2,6 +2,10 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+>>>>>>> development
 =======
     <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
 >>>>>>> development
