@@ -7,7 +7,5 @@ namespace WhatsInThePhotoAPI.Models
         public string Name { get; set; }
 
         public DateTime DateCreated { get; set; }
-
-        public string ModelLocation { get; set; }
     }
 }

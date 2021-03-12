@@ -107,11 +107,12 @@ namespace WhatsInThePhotoAPI.Controllers
             }
         }
     }
+}
 
-    public class ImageResult
-    {
-        public string Label { get; set; }
 
-        public float PercentageResult { get; set; }
-    }
+public class ImageResult
+{
+    public string Label { get; set; }
+
+    public float PercentageResult { get; set; }
 }
