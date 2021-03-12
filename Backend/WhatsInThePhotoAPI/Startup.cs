@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using WhatsInThePhotoAPI.ImageFileHelpers;
 
 namespace WhatsInThePhotoAPI
 {
@@ -20,6 +21,9 @@ namespace WhatsInThePhotoAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<IImageFileWriter, ImageFileWriter>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WhatsInThePhotoAPI", Version = "v1"});
