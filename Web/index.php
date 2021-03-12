@@ -8,20 +8,7 @@ include_once 'notifications/auth.notifications.php';
 <?php
 if (isset($_SESSION["userid"])) { ?>
     <div class="dashboard">
-        <div class="leftside-nav" id="leftside-nav">
-            <a href="javascript:void(0)" class="closebtn" id="closebtn" style="display: none;" onclick="closeNav()">&times;</a>
-            <div class="title">
-                <h3><strong><i class="fas fa-box-open" id="open-nav" onclick="openNav()"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
-            </div>
-            <div class="models">
-                <a href="#"><i class="fas fa-columns"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Dashboard</span></a>
-                <a href="#"><i class="fas fa-images"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Models</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Settings</span></a>
-            </div>
-        </div>
-        <div id="main">
 
-        </div>
     </div>
 <?php } else {
 ?>
