@@ -20,9 +20,6 @@ namespace WhatsInThePhotoAPI.Controllers
     {
         private const string ScriptLocation = @"Scripts\PredictScript.py";
 
-        private static readonly string[] labels =
-            {"airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"};
-
         private readonly IImageFileWriter _imageFileWriter;
 
         private readonly ILogger<MachineModelController> _logger;
@@ -33,7 +30,6 @@ namespace WhatsInThePhotoAPI.Controllers
             //Get injected dependencies
             _logger = logger;
             _imageFileWriter = imageFileWriter;
-
 
             //if (!PythonEngine.IsInitialized) PythonEngine.Initialize();
             string? pythonHome =
@@ -52,7 +48,7 @@ namespace WhatsInThePhotoAPI.Controllers
         {
             return new List<MachineModel>
             {
-                new() {Name = "Model1", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
+                new() {Name = "new_model_big_set.h5", DateCreated = DateTime.Now },
                 new() {Name = "Model2", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
                 new() {Name = "Model3", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
                 new() {Name = "Model4", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
@@ -64,7 +60,7 @@ namespace WhatsInThePhotoAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [Route("api/[controller]/Identify")]
-        public async Task<IActionResult> IdentityObjectFromFileAsync(IFormFile imageFile)
+        public async Task<IActionResult> IdentityObjectFromFileAsync(IFormFile imageFile, string modelName)
         {
             if (imageFile == null || imageFile.Length == 0)
                 return BadRequest();
@@ -75,7 +71,7 @@ namespace WhatsInThePhotoAPI.Controllers
 
                 string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile);
                 string imagePath = Path.GetFullPath($"TemporaryImages\\{temporaryFileLocation}");
-                string modelPath = Path.GetFullPath("MachineModels\\new_model_big_set.h5");
+                string modelPath = Path.GetFullPath($"MachineModels\\{modelName}");
 
                 string combinedCommand = $"{ScriptLocation} {modelPath} {imagePath}";
 
@@ -93,9 +89,6 @@ namespace WhatsInThePhotoAPI.Controllers
                         Console.WriteLine(returnValue);
                         break;
                 }
-
-                //dynamic testFunction = _scope.GetVariable("test_func");
-                //dynamic result = testFunction(imagePath, modelPath);
 
                 return Ok(returnValue);
             }
