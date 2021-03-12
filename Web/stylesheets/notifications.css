@@ -1,55 +1,35 @@
+/* success notification global attributes */
+
+.success {
+    background: #1FC2AF;
+    color: #055757;
+}
+
+.success .close-btn {
+    background: #1ba796;
+}
+
+.success .close-btn:hover {
+    background: #1dad9d;
+}
+
+.success .close-btn .fa-times {
+    color: #055757;
+    font-size: 22px;
+    line-height: 40px;
+}
+
 .signupalert {
-    background: #ffdb9b;
     padding: 20px 40px;
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
-    border-left: 8px solid #ffa502;
+    border-left: 8px solid;
     opacity: 0;
     pointer-events: none;
-}
-
-.signupalert.showAlert{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.signupalert.show {
-    animation: show_slide 1s ease forwards;
-}
-@keyframes show_slide {
-    0% {
-        transform: translateX(100%);
-    }
-    40% {
-        transform: translateX(-10%);
-    }
-    80% {
-        transform: translateX(0%)
-    }
-    100% {
-        transform: translateX(-10px);
-    }
-}
-.signupalert.hide {
-    animation: hide_slide 1s ease forwards;
-}
-@keyframes hide_slide {
-    0% {
-        transform: translateX(-10px);
-    }
-    40% {
-        transform: translateX(0%);
-    }
-    80% {
-        transform: translateX(-10%)
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 .signupalert .fa-user-circle {
@@ -57,14 +37,12 @@
     left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #ce8500;
     font-size: 30px;
 }
 
 .signupalert .msg {
-    padding: 0 20px;
+    padding: 0px 20px;
     font-size: 18px;
-    color: #ce8500;
 }
 
 .signupalert .close-btn {
@@ -72,7 +50,6 @@
     right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    background: #ffd080;
     padding: 20px 18px;
     cursor:pointer;
 }
@@ -81,57 +58,16 @@
 /* login alert */
 
 .loginalert {
-    background: #ffdb9b;
     padding: 20px 40px;
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
-    border-left: 8px solid #ffa502;
+    border-left: 8px solid;
     opacity: 0;
     pointer-events: none;
-}
-
-.loginalert.showAlert{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.loginalert.show {
-    animation: show_slide 1s ease forwards;
-}
-@keyframes show_slide {
-    0% {
-        transform: translateX(100%);
-    }
-    40% {
-        transform: translateX(-10%);
-    }
-    80% {
-        transform: translateX(0%)
-    }
-    100% {
-        transform: translateX(-10px);
-    }
-}
-.loginalert.hide {
-    animation: hide_slide 1s ease forwards;
-}
-@keyframes hide_slide {
-    0% {
-        transform: translateX(-10px);
-    }
-    40% {
-        transform: translateX(0%);
-    }
-    80% {
-        transform: translateX(-10%)
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 .loginalert .fa-lock-open {
@@ -139,14 +75,12 @@
     left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #ce8500;
     font-size: 27px;
 }
 
 .loginalert .msg {
     padding: 0 20px;
     font-size: 18px;
-    color: #ce8500;
 }
 
 .loginalert .close-btn {
@@ -154,7 +88,6 @@
     right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    background: #ffd080;
     padding: 20px 18px;
     cursor:pointer;
 }
@@ -162,26 +95,63 @@
 /* logout alert */
 
 .logoutalert {
-    background: #ffdb9b;
     padding: 20px 40px;
     min-width: 420px;
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: 63px;
     overflow:hidden;
     border-radius:4px;
-    border-left: 8px solid #ffa502;
+    border-left: 8px solid;
     opacity: 0;
     pointer-events: none;
 }
 
-.logoutalert.showAlert{
+.logoutalert .fa-lock {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 27px;
+}
+
+.logoutalert .msg {
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.logoutalert .close-btn {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px 18px;
+    cursor:pointer;
+}
+
+/* Animations */
+.showAlert{
     opacity: 1;
     pointer-events: auto;
 }
 
-.logoutalert.show {
+.show {
+    -webkit-animation: show_slide 1s ease forwards;
     animation: show_slide 1s ease forwards;
+}
+@-webkit-keyframes show_slide {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(0%)
+    }
+    100% {
+        transform: translateX(-10px);
+    }
 }
 @keyframes show_slide {
     0% {
@@ -197,8 +167,23 @@
         transform: translateX(-10px);
     }
 }
-.logoutalert.hide {
+.hide {
+    -webkit-animation: hide_slide 1s ease forwards;
     animation: hide_slide 1s ease forwards;
+}
+@-webkit-keyframes hide_slide {
+    0% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(0%);
+    }
+    80% {
+        transform: translateX(-10%)
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 @keyframes hide_slide {
     0% {
@@ -213,42 +198,4 @@
     100% {
         transform: translateX(100%);
     }
-}
-
-.logoutalert .fa-lock {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ce8500;
-    font-size: 27px;
-}
-
-.logoutalert .msg {
-    padding: 0 20px;
-    font-size: 18px;
-    color: #ce8500;
-}
-
-.logoutalert .close-btn {
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #ffd080;
-    padding: 20px 18px;
-    cursor:pointer;
-}
-
-
-/* close button */
-
-.close-btn:hover {
-    background: #ffc766;
-}
-
-.close-btn .fa-times {
-    color: #ce8500;
-    font-size: 22px;
-    line-height: 40px;
 }

@@ -1,7 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    color: white
+    color: white;
+    overflow-x: hidden; 
 }
 
 h1 {
@@ -9,20 +10,69 @@ h1 {
     color: #1FC2AF;
 }
 
+nav {
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline;
+  }
+
+  nav .nav-title {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  nav a {
+    color: #1FC2AF;
+  }
+
+  nav a:hover {
+    color: #055757;
+  }
+
+.nav-right {
+    float: right;
+    margin-top: -5px;   
+}
+
+nav .button-one {
+    margin-left: 5px;
+}
+
 .button-one {
     background-color: #08ED9B;
+    border-color: chartreuse;
+    color: black;
+}
+
+.button-one:hover {
+    background-color: #055757;
+    border-color: #055757;
 }
 
 .button-two {
     background-color: #17F1D8;
 }
 
-#override {
-    background-color: #08ED9B;
-    border-color: #08ED9B;
+.title-center {
+    margin: 0;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
-#override:hover {
-    background-color: grey;
-    border-color: grey;
+.welcome-message {
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
 }
