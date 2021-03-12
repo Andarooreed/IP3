@@ -12,12 +12,21 @@ COPY ["WhatsInThePhotoAPI.csproj", "."]
 # Step 3: Run a restore to download dependencies
 RUN dotnet restore "./WhatsInThePhotoAPI.csproj"
 
+
+RUN apt-get install python3 
+# Download latest listing of available packages:
+RUN apt-get -y update
+# Upgrade already installed packages:
+RUN apt-get -y upgrade
+# Install a new package:
+RUN apt-get -y install syslog-ng
 # Step 4: Copy app code to the container
 COPY . .
 WORKDIR "/src/."
 
 # Step 5: Build the app in Release mode
 RUN dotnet build "WhatsInThePhotoAPI.csproj" -c Release -o /app/build
+
 
 # Step 6: Publish the application
 FROM build AS publish
