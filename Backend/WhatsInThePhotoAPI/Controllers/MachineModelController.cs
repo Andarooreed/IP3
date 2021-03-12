@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -48,11 +49,8 @@ namespace WhatsInThePhotoAPI.Controllers
         {
             return new List<MachineModel>
             {
-                new() {Name = "new_model_big_set.h5", DateCreated = DateTime.Now },
-                new() {Name = "Model2", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model3", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model4", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model5", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"}
+                new() {Name = "3035-cup.h5", DateCreated = DateTime.Now},
+                new() {Name = "9001-cup.h5", DateCreated = DateTime.Now}
             };
         }
 
@@ -68,7 +66,6 @@ namespace WhatsInThePhotoAPI.Controllers
             {
                 _logger.LogInformation("Start processing image...");
 
-
                 string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile);
                 string imagePath = Path.GetFullPath($"TemporaryImages\\{temporaryFileLocation}");
                 string modelPath = Path.GetFullPath($"MachineModels\\{modelName}");
@@ -76,6 +73,17 @@ namespace WhatsInThePhotoAPI.Controllers
                 string combinedCommand = $"{ScriptLocation} {modelPath} {imagePath}";
 
                 string returnValue = PythonScript.ExecutePythonScript(combinedCommand);
+
+                string[] splittedValue = returnValue.Split('|');
+
+                string label = splittedValue[0];
+                float.TryParse(splittedValue[1], NumberStyles.Float, CultureInfo.InvariantCulture, out float fValue);
+
+                var imageResult = new ImageResult
+                {
+                    Label = label,
+                    PercentageResult = fValue * 100
+                };
 
                 switch (returnValue.ToLower())
                 {
@@ -90,7 +98,7 @@ namespace WhatsInThePhotoAPI.Controllers
                         break;
                 }
 
-                return Ok(returnValue);
+                return Ok(imageResult);
             }
             catch (Exception e)
             {
@@ -98,5 +106,12 @@ namespace WhatsInThePhotoAPI.Controllers
                 return BadRequest();
             }
         }
+    }
+
+    public class ImageResult
+    {
+        public string Label { get; set; }
+
+        public float PercentageResult { get; set; }
     }
 }

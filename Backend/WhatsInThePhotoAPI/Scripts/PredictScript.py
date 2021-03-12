@@ -23,13 +23,13 @@ try:
     image_location = sys.argv[2]
 except:
     # These are no file errors but handy to have default for now
-    model_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\MachineModels\\md2_cupstables50ep.h5"
+    model_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\MachineModels\\3035-cup.h5"
     image_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\TestImages\\testimage4.jpeg"
 
 img_size = (180, 180)
+label = model_location.split("-")[1].replace(".h5","").title()
 
 # Predict
-print(os.getcwd())
 model = keras.models.load_model(model_location)
 
 img = keras.preprocessing.image.load_img(image_location, target_size=img_size)
@@ -40,9 +40,4 @@ img_array = tf.expand_dims(img_array, 0)  # Create batch axis
 predictions = model.predict(img_array)
 
 # Print Result
-print (predictions[0][0])
-print(predictions)
-print("Results")
-print (predictions[0][0])
-
-print("Results" + predictions)
+print(label + "|" + str(predictions[0][0]))
