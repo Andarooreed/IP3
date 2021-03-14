@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +17,7 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
     /// <summary> Implementation class to inject with DI/IoC </summary>
     public class ImageFileWriter : IImageFileWriter
     {
-        string _imagesTmpFolder = CommonHelpers.GetAbsolutePath(@"../../../TemporaryImages");
+        private readonly string _imagesTmpFolder = CommonHelpers.GetAbsolutePath(@"../../../TemporaryImages");
 
         public async Task<string> UploadImageAsync(IFormFile file)
         {
@@ -31,9 +32,10 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
             {
                 File.Delete(filePathName);
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                throw e;
+                Debug.WriteLine(exception);
+                throw;
             }
         }
 
@@ -60,10 +62,10 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
             string fileName;
             try
             {
-                var extension = "." + file.FileName.Split('.')[^1];
+                string? extension = "." + file.FileName.Split('.')[^1];
                 fileName = Guid.NewGuid() + extension; //Create a new name for the file 
 
-                var filePathName = Path.Combine(Directory.GetCurrentDirectory(), _imagesTmpFolder, fileName);
+                string? filePathName = Path.Combine(Directory.GetCurrentDirectory(), _imagesTmpFolder, fileName);
 
                 await using var fileStream = new FileStream(filePathName, FileMode.Create);
                 await file.CopyToAsync(fileStream);
