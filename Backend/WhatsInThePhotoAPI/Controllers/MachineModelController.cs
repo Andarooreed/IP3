@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using WhatsInThePhotoAPI.ImageFileHelpers;
 using WhatsInThePhotoAPI.Models;
 using WhatsInThePhotoAPI.Scripts;
@@ -19,10 +20,6 @@ namespace WhatsInThePhotoAPI.Controllers
     [ApiController]
     public class MachineModelController : ControllerBase
     {
-        private const string PredictScriptLocation = @"Scripts\PredictScript.py";
-
-        private const string TrainingScriptLocation = @"Scripts\TrainModel.py";
-
         private readonly IImageFileWriter _imageFileWriter;
 
         private readonly ILogger<MachineModelController> _logger;
@@ -47,12 +44,12 @@ namespace WhatsInThePhotoAPI.Controllers
         [HttpGet]
         public IEnumerable<MachineModel> GetAllModels()
         {
-            return new List<MachineModel>
-            {
-                new("3035-cup.h5", DateTime.Now),
-                new("9001-cup.h5", DateTime.Now)
-            };
+            var context =
+                HttpContext.RequestServices.GetService(typeof(MachineModelContext)) as MachineModelContext;
+
+            return context.GetAllMachineModels();
         }
+
 
         [HttpPost]
         [ProducesResponseType(200)]
@@ -60,10 +57,28 @@ namespace WhatsInThePhotoAPI.Controllers
         [Route("api/[controller]/TrainModel")]
         public async Task<IActionResult> TrainModel(MachineModel machineModel)
         {
+            const string trainingScriptLocation = @"Scripts\TrainModel.py";
+
             string imagePath = Path.GetFullPath($"TemporaryImages\\{machineModel.Name}");
             string modelPath = Path.GetFullPath($"MachineModels\\{machineModel.Name}");
 
-            string combinedCommand = $"{TrainingScriptLocation} {modelPath} {imagePath}";
+            string combinedCommand = $"{trainingScriptLocation} {modelPath} {imagePath}";
+
+            string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
+
+            return Ok(returnValue);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Route("api/[controller]/DownloadImage")]
+        public async Task<IActionResult> DownloadImages(string imageDownloadQuery,
+            int imageAmount)
+        {
+            const string downloadImagesScriptLocation = @"Scripts\DownloadImages.py";
+
+            string combinedCommand = $"{downloadImagesScriptLocation} {imageDownloadQuery} {imageAmount}";
 
             string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 
@@ -82,11 +97,13 @@ namespace WhatsInThePhotoAPI.Controllers
             {
                 _logger.LogInformation("Start processing image...");
 
-                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile);
+                const string predictScriptLocation = @"Scripts\PredictScript.py";
+
+                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile, false);
                 string imagePath = Path.GetFullPath($"TemporaryImages\\{temporaryFileLocation}");
                 string modelPath = Path.GetFullPath($"MachineModels\\{modelName}");
 
-                string combinedCommand = $"{PredictScriptLocation} {modelPath} {imagePath}";
+                string combinedCommand = $"{predictScriptLocation} {modelPath} {imagePath}";
 
                 string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 
@@ -104,6 +121,71 @@ namespace WhatsInThePhotoAPI.Controllers
                 _logger.LogInformation("Error is: " + e.Message);
                 return BadRequest();
             }
+        }
+
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Route("api/[controller]/UploadImage")]
+        public async Task<IActionResult> UploadImage(IFormFile? imageFile, string modelId)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+                return BadRequest();
+            try
+            {
+                _logger.LogInformation("Start processing image...");
+
+                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile, true);
+
+                string imagePath = Path.GetFullPath($"User_Images\\{temporaryFileLocation}");
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation("Error is: " + e.Message);
+                return BadRequest();
+            }
+        }
+    }
+
+
+    public class MachineModelContext
+    {
+        public MachineModelContext(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+
+        public string ConnectionString { get; set; }
+
+        public List<MachineModel> GetAllMachineModels()
+        {
+            List<MachineModel> list = new();
+
+            using MySqlConnection conn = GetConnection();
+            conn.Open();
+            MySqlCommand cmd = new("Select * From model", conn);
+
+            using MySqlDataReader? reader = cmd.ExecuteReader();
+            while (reader.Read())
+                list.Add(new MachineModel
+                {
+                    ModelId = Convert.ToInt32(reader["model_id"]),
+                    Name = reader["name"].ToString(),
+                    UserId = Convert.ToInt32(reader["user_id"]),
+                    ImageGroupId = Convert.ToInt32(reader["image_group_id"]),
+                    Location = reader["location"].ToString(),
+                    LastDateUpdate = DateTime.Parse((string) reader["last_update_dt"])
+                });
+
+            return list;
+        }
+
+        private MySqlConnection GetConnection()
+        {
+            return new(ConnectionString);
         }
     }
 }

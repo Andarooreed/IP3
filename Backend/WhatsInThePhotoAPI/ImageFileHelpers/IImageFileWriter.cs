@@ -9,7 +9,7 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
     /// <summary> Interface to use in DI/IoC </summary>
     public interface IImageFileWriter
     {
-        Task<string> UploadImageAsync(IFormFile file);
+        Task<string> UploadImageAsync(IFormFile file, bool keepImages);
 
         void DeleteImageTempFile(string filePathName);
     }
@@ -19,9 +19,11 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
     {
         private readonly string _imagesTmpFolder = CommonHelpers.GetAbsolutePath(@"../../../TemporaryImages");
 
-        public async Task<string> UploadImageAsync(IFormFile file)
+        private readonly string _userImages = CommonHelpers.GetAbsolutePath(@"../../../User_Images");
+
+        public async Task<string> UploadImageAsync(IFormFile file, bool keepImages)
         {
-            if (CheckIfImageFile(file)) return await WriteFile(file);
+            if (CheckIfImageFile(file)) return await WriteFile(file, keepImages);
 
             return "Invalid image file";
         }
@@ -40,8 +42,6 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
         }
 
         /// <summary> Method to check if file is image file </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
         private static bool CheckIfImageFile(IFormFile file)
         {
             byte[] fileBytes;
@@ -55,9 +55,7 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
         }
 
         /// <summary> Method to write file onto the disk </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public async Task<string> WriteFile(IFormFile file)
+        public async Task<string> WriteFile(IFormFile file, bool keepImages)
         {
             string fileName;
             try
@@ -65,7 +63,10 @@ namespace WhatsInThePhotoAPI.ImageFileHelpers
                 string? extension = "." + file.FileName.Split('.')[^1];
                 fileName = Guid.NewGuid() + extension; //Create a new name for the file 
 
-                string? filePathName = Path.Combine(Directory.GetCurrentDirectory(), _imagesTmpFolder, fileName);
+                string? filePathName = string.Empty;
+
+                filePathName = Path.Combine(Directory.GetCurrentDirectory(),
+                    keepImages ? _userImages : _imagesTmpFolder, fileName);
 
                 await using var fileStream = new FileStream(filePathName, FileMode.Create);
                 await file.CopyToAsync(fileStream);
