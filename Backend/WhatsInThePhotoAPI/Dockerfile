@@ -8,12 +8,13 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["WhatsInThePhotoAPI.csproj", "."]
+EXPOSE 9000
 
 # Step 3: Run a restore to download dependencies
 RUN dotnet restore "./WhatsInThePhotoAPI.csproj"
 
 
-RUN apt-get install python3 
+RUN apt-get install python3-pip python3.8-dev python3.8-distutils python3.8-venv
 # Download latest listing of available packages:
 RUN apt-get -y update
 # Upgrade already installed packages:

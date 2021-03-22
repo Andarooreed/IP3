@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 80:80
+      - 8080:8080
   ngrok:
     image: shkoliar/ngrok:latest
     ports:
@@ -16,4 +16,4 @@ services:
       - ${DOCKER_REGISTRY-}whatsinthephotoapi
     environment:
       - DOMAIN=whatsinthephotoapi
-      - PORT=80
+      - PORT=8080

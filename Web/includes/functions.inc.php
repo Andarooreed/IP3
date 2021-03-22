@@ -50,7 +50,7 @@ function pwdMatch($pwd, $pwdrepeat) {
 
 // Check if username is in database, if so then return data
 function uidExists($conn, $username) {
-  $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+  $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../index.php?error=stmtfailed");
@@ -76,7 +76,7 @@ function uidExists($conn, $username) {
 
 // Insert new user into database
 function createUser($conn, $name, $email, $username, $pwd) {
-  $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
+  $sql = "INSERT INTO users (name, email, username, password) VALUES (?, ?, ?, ?);";
 
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -115,7 +115,7 @@ function loginUser($conn, $username, $pwd) {
 		exit();
 	}
 
-	$pwdHashed = $uidExists["usersPwd"];
+	$pwdHashed = $uidExists["password"];
 	$checkPwd = password_verify($pwd, $pwdHashed);
 
 	if ($checkPwd === false) {
@@ -124,8 +124,8 @@ function loginUser($conn, $username, $pwd) {
 	}
 	elseif ($checkPwd === true) {
 		session_start();
-		$_SESSION["userid"] = $uidExists["usersId"];
-		$_SESSION["useruid"] = $uidExists["usersUid"];
+		$_SESSION["user_id"] = $uidExists["user_id"];
+		$_SESSION["username"] = $uidExists["username"];
 		header("location: ../index.php?error=login-none");
 		exit();
 	}

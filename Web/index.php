@@ -6,7 +6,7 @@ include_once 'notifications/auth.notifications.php';
 ?>
 
 <?php
-if (isset($_SESSION["userid"])) { ?>
+if (isset($_SESSION["user_id"])) { ?>
     <div class="dashboard">
 
     </div>

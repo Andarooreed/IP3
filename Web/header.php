@@ -43,11 +43,11 @@ session_start();
                         </a></li>
                 </div>
                 <?php
-                if (isset($_SESSION["userid"])) {; ?>
+                if (isset($_SESSION["user_id"])) {; ?>
                     <div class="nav-right">
                         <div class="welcome-message">
                             <li>
-                                <h4>Welcome <?php echo $_SESSION["useruid"] ?></h4>
+                                <h4>Welcome <?php echo $_SESSION["username"] ?></h4>
                             </li>
                         </div>
                         <li><a href="includes/logout.inc.php"><button class="button-one">Logout</button></a></li>
