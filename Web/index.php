@@ -22,15 +22,14 @@ if (isset($_SESSION["user_id"])) { ?>
         </div>
     </div>
     <div id="main">
-    <?php 
-    if ($_GET["page"] == "dashboard") {
-        include_once './content/home.php';
-    }
-    else if ($_GET["page"] == "models") {     
-        include_once './content/models.php';
-    } else if ($_GET["page"] == "settings") {
-        include_once './content/settings.php';
-    }
+        <?php
+        if ($_GET["page"] == "dashboard") {
+            include_once './content/home.php';
+        } else if ($_GET["page"] == "models") {
+            include_once './content/models.php';
+        } else if ($_GET["page"] == "settings") {
+            include_once './content/settings.php';
+        }
         ?>
     </div>
 <?php } else {
