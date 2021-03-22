@@ -23,7 +23,7 @@ if (isset($_SESSION["user_id"])) { ?>
     </div>
     <div id="main">
         <?php
-        include_once './Tabs/models.php';
+        include_once './content/models.php';
         ?>
     </div>
 <?php } else {
