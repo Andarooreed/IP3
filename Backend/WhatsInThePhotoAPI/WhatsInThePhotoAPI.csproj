@@ -7,11 +7,12 @@
     <DockerfileContext>.</DockerfileContext>
     <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MachineModels\md2_cupstables50ep.h5" />
-    <None Remove="MachineModels\new_model_big_set.h5" />
+    <None Remove="MachineModels\3035-cup.h5" />
+    <None Remove="MachineModels\9001-cup.h5" />
     <None Remove="TestImages\testimage1.jpeg" />
     <None Remove="TestImages\testimage2.jpeg" />
     <None Remove="TestImages\testimage3.jpeg" />
@@ -19,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="MachineModels\md2_cupstables50ep.h5" />
-    <EmbeddedResource Include="MachineModels\new_model_big_set.h5" />
+    <EmbeddedResource Include="MachineModels\3035-cup.h5" />
+    <EmbeddedResource Include="MachineModels\9001-cup.h5" />
     <EmbeddedResource Include="TestImages\testimage1.jpeg" />
     <EmbeddedResource Include="TestImages\testimage2.jpeg" />
     <EmbeddedResource Include="TestImages\testimage3.jpeg" />
@@ -28,14 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Keras.NET" Version="3.8.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
-    <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.4.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.23" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="User_Images\" />
     <Folder Include="TemporaryImages\" />
   </ItemGroup>
 

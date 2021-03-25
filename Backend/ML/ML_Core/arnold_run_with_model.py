@@ -1,6 +1,6 @@
 # ML Core Function - Execute existing model
 # DM 2021-03-011
-# v1 (DM 2021-03-11)
+# v2 (DM 2021-03-12)
 # Reference https://towardsdatascience.com/10-minutes-to-building-a-cnn-binary-image-classifier-in-tensorflow-4e216b2034aa
 
 # Imports/ Installs
@@ -8,13 +8,21 @@ import os
 import sys
 import pip
 
+# Suppress TF gpu warning
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 try:
     import tensorflow as tf
     from tensorflow import keras
     from keras.models import load_model
 except:
+    # Run Imports
+    print("Didn't install your stuff, man.")
+    pip.main(['install','tensorflow'])
     import tensorflow as tf
     from tensorflow import keras
+    from keras.models import load_model
+    
 
 # Variable
 try:
@@ -23,8 +31,8 @@ try:
     image_location = sys.argv[2]
 except:
     # These are no file errors but handy to have default for now
-    model_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\MachineModels\\3035-cup.h5"
-    image_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\TestImages\\testimage4.jpeg"
+    model_location = "C:/Users/danie/OneDrive/Documents/git/IP3/Backend/ML/ML_Core/models/3035-cup.h5"
+    image_location = "C:/Users/danie/OneDrive/Documents/Uni Shit/Year 3/Tri_Bute/IPFreely/IP3/Backend/ML_Core/User_Images/test/test_cup_2.jpeg"
 
 img_size = (180, 180)
 label = model_location.split("-")[1].replace(".h5","").title()
