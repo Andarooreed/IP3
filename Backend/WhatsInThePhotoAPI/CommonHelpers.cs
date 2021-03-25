@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace WhatsInThePhotoAPI
 {
@@ -6,10 +7,11 @@ namespace WhatsInThePhotoAPI
     {
         public static string GetAbsolutePath(string relativePath)
         {
-            var _dataRoot = new FileInfo(typeof(Program).Assembly.Location);
-            var assemblyFolderPath = _dataRoot.Directory.FullName;
+            var dataRoot = new FileInfo(typeof(Program).Assembly.Location);
+            string? assemblyFolderPath = dataRoot?.Directory?.FullName;
 
-            var fullPath = Path.Combine(assemblyFolderPath, relativePath);
+            string? fullPath = Path.Combine(assemblyFolderPath ?? throw new InvalidOperationException(), relativePath);
+
             return fullPath;
         }
     }

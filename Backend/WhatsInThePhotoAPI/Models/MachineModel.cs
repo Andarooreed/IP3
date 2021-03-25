@@ -4,10 +4,16 @@ namespace WhatsInThePhotoAPI.Models
 {
     public class MachineModel
     {
+        public int ModelId { get; set; }
+
+        public int UserId { get; set; }
+
         public string Name { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public int ImageGroupId { get; set; }
 
-        public string ModelLocation { get; set; }
+        public string Location { get; set; }
+
+        public DateTime LastDateUpdate { get; set; }
     }
 }

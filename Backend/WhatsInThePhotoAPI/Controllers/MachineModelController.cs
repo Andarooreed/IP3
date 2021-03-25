@@ -1,12 +1,14 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Python.Runtime;
+using MySql.Data.MySqlClient;
 using WhatsInThePhotoAPI.ImageFileHelpers;
 using WhatsInThePhotoAPI.Models;
 using WhatsInThePhotoAPI.Scripts;
@@ -18,8 +20,6 @@ namespace WhatsInThePhotoAPI.Controllers
     [ApiController]
     public class MachineModelController : ControllerBase
     {
-        private const string ScriptLocation = @"Scripts\PredictScript.py";
-
         private readonly IImageFileWriter _imageFileWriter;
 
         private readonly ILogger<MachineModelController> _logger;
@@ -31,36 +31,65 @@ namespace WhatsInThePhotoAPI.Controllers
             _logger = logger;
             _imageFileWriter = imageFileWriter;
 
-            //if (!PythonEngine.IsInitialized) PythonEngine.Initialize();
             string? pythonHome =
                 Environment.GetEnvironmentVariable("PYTHONHOME", EnvironmentVariableTarget.Process);
             string? pythonPath =
                 Environment.GetEnvironmentVariable("PYTHONPATH", EnvironmentVariableTarget.Process);
 
-            Debug.WriteLine(PythonEngine.PythonHome);
-            Debug.WriteLine(PythonEngine.Version);
-            Debug.WriteLine(PythonEngine.PythonPath);
+            Debug.WriteLine(pythonHome);
+            Debug.WriteLine(pythonPath);
         }
 
         // GET: api/<MachineModelController>
         [HttpGet]
         public IEnumerable<MachineModel> GetAllModels()
         {
-            return new List<MachineModel>
-            {
-                new() {Name = "new_model_big_set.h5", DateCreated = DateTime.Now },
-                new() {Name = "Model2", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model3", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model4", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"},
-                new() {Name = "Model5", DateCreated = DateTime.Now, ModelLocation = "Look at me MrMeeseks"}
-            };
+            var context =
+                HttpContext.RequestServices.GetService(typeof(MachineModelContext)) as MachineModelContext;
+
+            return context.GetAllMachineModels();
+        }
+
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Route("api/[controller]/TrainModel")]
+        public async Task<IActionResult> TrainModel(MachineModel machineModel)
+        {
+            const string trainingScriptLocation = @"Scripts\TrainModel.py";
+
+            string imagePath = Path.GetFullPath($"TemporaryImages\\{machineModel.Name}");
+            string modelPath = Path.GetFullPath($"MachineModels\\{machineModel.Name}");
+
+            string combinedCommand = $"{trainingScriptLocation} {modelPath} {imagePath}";
+
+            string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
+
+            return Ok(returnValue);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Route("api/[controller]/DownloadImage")]
+        public async Task<IActionResult> DownloadImages(string imageDownloadQuery,
+            int imageAmount)
+        {
+            const string downloadImagesScriptLocation = @"Scripts\DownloadImages.py";
+
+            string combinedCommand = $"{downloadImagesScriptLocation} {imageDownloadQuery} {imageAmount}";
+
+            string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
+
+            return Ok(returnValue);
         }
 
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [Route("api/[controller]/Identify")]
-        public async Task<IActionResult> IdentityObjectFromFileAsync(IFormFile imageFile, string modelName)
+        public async Task<IActionResult> IdentityObjectFromFileAsync(IFormFile? imageFile, string modelName)
         {
             if (imageFile == null || imageFile.Length == 0)
                 return BadRequest();
@@ -68,35 +97,95 @@ namespace WhatsInThePhotoAPI.Controllers
             {
                 _logger.LogInformation("Start processing image...");
 
+                const string predictScriptLocation = @"Scripts\PredictScript.py";
 
-                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile);
+                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile, false);
                 string imagePath = Path.GetFullPath($"TemporaryImages\\{temporaryFileLocation}");
                 string modelPath = Path.GetFullPath($"MachineModels\\{modelName}");
 
-                string combinedCommand = $"{ScriptLocation} {modelPath} {imagePath}";
+                string combinedCommand = $"{predictScriptLocation} {modelPath} {imagePath}";
 
-                string returnValue = PythonScript.ExecutePythonScript(combinedCommand);
+                string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 
-                switch (returnValue.ToLower())
-                {
-                    case "1":
-                        Console.WriteLine("Image category 1");
-                        break;
-                    case "0":
-                        Console.WriteLine("Image category 0");
-                        break;
-                    default:
-                        Console.WriteLine(returnValue);
-                        break;
-                }
+                string[] splitValues = returnValue.Split('|');
 
-                return Ok(returnValue);
+                string label = splitValues[0];
+                float.TryParse(splitValues[1], NumberStyles.Float, CultureInfo.InvariantCulture, out float fValue);
+
+                var imageResult = new ImageResult(label, fValue * 100);
+
+                return Ok(imageResult);
             }
             catch (Exception e)
             {
                 _logger.LogInformation("Error is: " + e.Message);
                 return BadRequest();
             }
+        }
+
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [Route("api/[controller]/UploadImage")]
+        public async Task<IActionResult> UploadImage(IFormFile? imageFile, string modelId)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+                return BadRequest();
+            try
+            {
+                _logger.LogInformation("Start processing image...");
+
+                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile, true);
+
+                string imagePath = Path.GetFullPath($"User_Images\\{temporaryFileLocation}");
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation("Error is: " + e.Message);
+                return BadRequest();
+            }
+        }
+    }
+
+
+    public class MachineModelContext
+    {
+        public MachineModelContext(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+
+        public string ConnectionString { get; set; }
+
+        public List<MachineModel> GetAllMachineModels()
+        {
+            List<MachineModel> list = new();
+
+            using MySqlConnection conn = GetConnection();
+            conn.Open();
+            MySqlCommand cmd = new("Select * From model", conn);
+
+            using MySqlDataReader? reader = cmd.ExecuteReader();
+            while (reader.Read())
+                list.Add(new MachineModel
+                {
+                    ModelId = Convert.ToInt32(reader["model_id"]),
+                    Name = reader["name"].ToString(),
+                    UserId = Convert.ToInt32(reader["user_id"]),
+                    ImageGroupId = Convert.ToInt32(reader["image_group_id"]),
+                    Location = reader["location"].ToString(),
+                    LastDateUpdate = DateTime.Parse((string) reader["last_update_dt"])
+                });
+
+            return list;
+        }
+
+        private MySqlConnection GetConnection()
+        {
+            return new(ConnectionString);
         }
     }
 }
