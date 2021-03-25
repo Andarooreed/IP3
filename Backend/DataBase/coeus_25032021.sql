@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2021 at 03:55 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Generation Time: Mar 21, 2021 at 11:04 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `coeus`
 --
+CREATE DATABASE IF NOT EXISTS `coeus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `coeus`;
 
 -- --------------------------------------------------------
 
@@ -36,7 +37,7 @@ CREATE TABLE `image` (
   `name` varchar(128) NOT NULL,
   `location` varchar(128) NOT NULL,
   `simp` bit(1) NOT NULL,
-  `last_update_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `last_update_dt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,7 +52,7 @@ CREATE TABLE `model` (
   `image_group_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `location` varchar(128) NOT NULL,
-  `last_update_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `last_update_dt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,7 +69,7 @@ CREATE TABLE `prediction_run` (
   `accuracy` decimal(9,3) NOT NULL,
   `prediction_correct` bit(1) NOT NULL,
   `duration` int(11) NOT NULL,
-  `last_update_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `last_update_dt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,7 +87,7 @@ CREATE TABLE `training_run` (
   `count_images` int(11) NOT NULL,
   `accuracy` decimal(9,3) NOT NULL,
   `duration` int(11) NOT NULL,
-  `last_update_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `last_update_dt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,31 +99,20 @@ CREATE TABLE `training_run` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `username` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `last_update_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users_andy`
---
-
-CREATE TABLE `users_andy` (
-  `usersId` int(11) NOT NULL,
-  `usersName` varchar(128) NOT NULL,
-  `usersEmail` varchar(128) NOT NULL,
-  `usersUid` varchar(128) NOT NULL,
-  `usersPwd` varchar(128) NOT NULL
+  `last_update_dt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users_andy`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users_andy` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`) VALUES
-(1, 'Test User', 'test@test.com', 'Test2021', '$2y$10$B54pRLpYuIMwiRqSCKNX1uxMYs23YOxlY8rlHAFWWtcccZczUATxK');
+INSERT INTO `users` (`user_id`, `name`, `username`, `email`, `password`, `last_update_dt`) VALUES
+(1, 'Test User', 'test2021', 'test@test.com', '$2y$10$X4vI4RrF3F.5YTZC.eHHGuc7aNVLCHdzhReXD7y4m06JhvmjmupjW', '2021-03-19 20:52:54'),
+(2, 'Fred Durst', 'Fdurst2021', 'fd@lb.com', '$2y$10$WzQAzBLNxs6ZMnG/HdSmEOpIRYX.oIPLEjRL4LoRUriCFlnbLzTV6', '2021-03-19 21:02:18'),
+(3, 'New Person', 'Person20', 'person@person.com', '$2y$10$xXtZFuMcpBGGEPPAHKd3YeaXrAJW/Tfs3vtrBfBX2GnC1rIQ14k5W', '2021-03-21 09:56:06');
 
 --
 -- Indexes for dumped tables
@@ -190,7 +180,7 @@ ALTER TABLE `training_run`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

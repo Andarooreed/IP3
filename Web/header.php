@@ -38,7 +38,7 @@ session_start();
         <div class="wrapper">
             <ul>
                 <div class="nav-title">
-                    <li><a href="index.php">
+                    <li><a href="index.php?page=dashboard">
                             <h3><strong><i class="fas fa-box-open"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
                         </a></li>
                 </div>
