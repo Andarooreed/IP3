@@ -177,7 +177,7 @@ namespace WhatsInThePhotoAPI.Controllers
                     UserId = Convert.ToInt32(reader["user_id"]),
                     ImageGroupId = Convert.ToInt32(reader["image_group_id"]),
                     Location = reader["location"].ToString(),
-                    LastDateUpdate = DateTime.Parse((string) reader["last_update_dt"])
+                    LastDateUpdate = Convert.ToDateTime(reader["last_update_dt"])
                 });
 
             return list;
