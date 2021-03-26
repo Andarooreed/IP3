@@ -26,20 +26,20 @@
   </form>
   <?php
   // Error messages
-  if (isset($_GET["error"])) {
-    if ($_GET["error"] == "emptyinput") {
+  if (isset($_GET["page"])) {
+    if ($_GET["page"] == "emptyinput") {
       echo "<p>Fill in all fields!</p>";
-    } else if ($_GET["error"] == "invaliduid") {
+    } else if ($_GET["page"] == "invaliduid") {
       echo "<p>Username is invalid</p>";
-    } else if ($_GET["error"] == "invalidemail") {
+    } else if ($_GET["page"] == "invalidemail") {
       echo "<p>Email is invalid</p>";
-    } else if ($_GET["error"] == "passwordsdontmatch") {
+    } else if ($_GET["page"] == "passwordsdontmatch") {
       echo "<p>Passwords don't match</p>";
-    } else if ($_GET["error"] == "stmtfailed") {
+    } else if ($_GET["page"] == "stmtfailed") {
       echo "<p>Something went wrong</p>";
-    } else if ($_GET["error"] == "usernametaken") {
+    } else if ($_GET["page"] == "usernametaken") {
       echo "<p>Username already taken</p>";
-    } else if ($_GET["error"] == "signup-none") {
+    } else if ($_GET["page"] == "signup-none") {
   ?>
       <script>
         $(document).ready(function() {

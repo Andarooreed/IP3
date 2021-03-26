@@ -21,10 +21,10 @@
   </form>
   <?php
   // Error messages
-  if (isset($_GET["error"])) {
-    if ($_GET["error"] == "emptyinput") {
+  if (isset($_GET["page"])) {
+    if ($_GET["page"] == "emptyinput") {
       echo "<p>Fill in all fields</p>";
-    } else if ($_GET["error"] == "wronglogin") { ?>
+    } else if ($_GET["page"] == "wronglogin") { ?>
       <script>
         $(document).ready(function() {
           $('.credentialalert').removeClass("hide");
@@ -48,7 +48,7 @@
         });
       </script>
     <?php
-    } else if ($_GET["error"] == "login-none") {
+    } else if ($_GET["page"] == "login-none") {
     ?>
       <script>
         $(document).ready(function() {
@@ -73,7 +73,7 @@
         });
       </script>
   <?php
-    } else if ($_GET["error"] == "logout-none") {
+    } else if ($_GET["page"] == "logout-none") {
       ?>
         <script>
           $(document).ready(function() {
@@ -102,4 +102,3 @@
   }
   ?>
 </div>
-</form>

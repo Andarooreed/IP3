@@ -45,9 +45,10 @@ function display_array_recursive($json_rec){
 </div>
 
 <div class="model-info">
+<button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
     <form action="POST">
     <input type="file" id="myFile" name="filename">
         <br>
-        <button id="predict">Predict</button>
+        <button id="predict" class="button-one">Predict</button>
     </form>
 </div>

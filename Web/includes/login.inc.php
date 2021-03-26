@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
 
   // Left inputs empty
   if (emptyInputLogin($username, $pwd) === true) {
-    header("location: ../index.php?error=emptyinput");
+    header("location: ../index.php?page=emptyinput");
 		exit();
   }
 
