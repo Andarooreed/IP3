@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
 
   addModel($conn, $userId, $imageGroupId, $name, $location);
 
-  header("location: ../index.php?page=dashboard");
+  header("location: ../index.php?page=models");
     exit();
 
 }

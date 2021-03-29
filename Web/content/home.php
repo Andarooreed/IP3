@@ -10,8 +10,6 @@ $response = file_get_contents("https://localhost:44317/api/MachineModel", false,
 
 $json_array = json_decode($response, true);
 
-
-
 function display_array_recursive($json_rec){
 	if($json_rec){
 		foreach($json_rec as $key=> $value){
@@ -27,28 +25,9 @@ function display_array_recursive($json_rec){
 }
 
 ?>
+
 <div class=model-info-test-display>
-    <form action="POST">
-	<?php
-    foreach ($json_array as $model) {
-        // echo $model['name'] . "<br />";
-        ?><input type="radio" name="model" value="<?php $model['name'] ?>">
-        <label for="<?php $model['name'] ?>"><?php echo $model['name'] ?></label>
-        <?php
-    }
+	<?php 
+	display_array_recursive($json_array) ;
 	?>
-    </form>
-</div>
-
-<div class="model-list">
-
-</div>
-
-<div class="model-info">
-<button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
-    <form action="POST">
-    <input type="file" id="myFile" name="filename">
-        <br>
-        <button id="predict" class="button-one">Predict</button>
-    </form>
 </div>
