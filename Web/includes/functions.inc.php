@@ -149,4 +149,3 @@ function addModel($conn, $userId, $imageGroupId, $name, $location)
 		header("location: ../index.php?page=models");
 		exit();
 	}
-
