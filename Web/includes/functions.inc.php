@@ -142,10 +142,36 @@ function addModel($conn, $userId, $imageGroupId, $name, $location)
 		header("location: ../index.php?page=stmtfailed");
 		exit();
 	}
-		mysqli_stmt_bind_param($stmt, "ssss", $userId, $imageGroupId, $name, $location);
-		mysqli_stmt_execute($stmt);
-		mysqli_stmt_close($stmt);
-		mysqli_close($conn);
-		header("location: ../index.php?page=models");
-		exit();
+	mysqli_stmt_bind_param($stmt, "ssss", $userId, $imageGroupId, $name, $location);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
+	header("location: ../index.php?page=models");
+	exit();
+}
+
+
+function postImageForPrediction($fileName, $modelName)
+{
+	$data = array('key1' => 'value1', 'key2' => 'value2');
+
+	$arrContextOptions = array(
+		"ssl" => array(
+			"verify_peer" => false,
+			"verify_peer_name" => false,
+		),
+		"http" => array(
+			'header'  => "Content-type: application/json; charset=utf-8",
+			'method'  => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+
+	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/Identify?filename=$fileName&modelName=$modelName", false, stream_context_create($arrContextOptions));
+
+	$json_array = json_decode($response, true);
+
+	foreach ($json_array as $prediction) {
+		echo $prediction;
 	}
+}
