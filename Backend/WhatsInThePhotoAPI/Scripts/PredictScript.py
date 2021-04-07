@@ -23,8 +23,8 @@ try:
     image_location = sys.argv[2]
 except:
     # These are no file errors but handy to have default for now
-    model_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\MachineModels\\3035-cup.h5"
-    image_location = "C:\\Users\\Jargar\\Source\Repos\\Andarooreed\\IP3\\Backend\WhatsInThePhotoAPI\\TestImages\\testimage4.jpeg"
+    model_location = "C:\\xampp\\htdocs\\IP3\\Backend\\WhatsInThePhotoAPI\\MachineModels\\3035-cup.h5"
+    image_location = "C:\\xampp\\htdocs\\IP3\\Backend\\WhatsInThePhotoAPI\\TestImages\\testimage4.jpeg"
 
 img_size = (180, 180)
 label = model_location.split("-")[1].replace(".h5","").title()

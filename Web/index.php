@@ -2,6 +2,7 @@
 include_once 'header.php';
 include_once 'modals/login.modal.php';
 include_once 'modals/signup.modal.php';
+include_once 'modals/addmodel.modal.php';
 include_once 'notifications/auth.notifications.php';
 ?>
 
@@ -23,7 +24,9 @@ if (isset($_SESSION["user_id"])) { ?>
     </div>
     <div id="main">
         <?php
-        if ($_GET["page"] == "dashboard") {
+        if ($_GET["page"] == "login-none") {
+            include_once './content/home.php';
+        } else if($_GET["page"] == "dashboard") {
             include_once './content/home.php';
         } else if ($_GET["page"] == "models") {
             include_once './content/models.php';
