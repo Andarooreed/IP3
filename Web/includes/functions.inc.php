@@ -170,8 +170,10 @@ function postImageForPrediction($fileName, $modelName)
 	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/Identify?filename=$fileName&modelName=$modelName", false, stream_context_create($arrContextOptions));
 
 	$json_array = json_decode($response, true);
-
-	foreach ($json_array as $prediction) {
-		echo $prediction;
-	}
+	session_start();
+	$_SESSION["predictionLabel"] = $json_array['label'];
+	$_SESSION["predictionResult"] = $json_array['percentageResult'];
+	
+	header("location: ../index.php?page=models");
+	exit();
 }

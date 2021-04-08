@@ -33,3 +33,8 @@ $json_array = json_decode($response, true);
         <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
     </div>
 </div>
+<div class="main-section">
+
+<?php echo $_SESSION["predictionLabel"] . " - " . $_SESSION["predictionResult"]; ?>
+
+</div>
