@@ -89,18 +89,15 @@ namespace WhatsInThePhotoAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [Route("api/[controller]/Identify")]
-        public async Task<IActionResult> IdentityObjectFromFileAsync(IFormFile? imageFile, string modelName)
+        public async Task<IActionResult> IdentityObjectFromFileAsync(string filename, string modelName)
         {
-            if (imageFile == null || imageFile.Length == 0)
-                return BadRequest();
             try
             {
                 _logger.LogInformation("Start processing image...");
 
                 const string predictScriptLocation = @"Scripts\PredictScript.py";
 
-                string temporaryFileLocation = await _imageFileWriter.UploadImageAsync(imageFile, false);
-                string imagePath = Path.GetFullPath($"TemporaryImages\\{temporaryFileLocation}");
+                string imagePath = Path.GetFullPath($"TemporaryImages\\{filename}");
                 string modelPath = Path.GetFullPath($"MachineModels\\{modelName}");
 
                 string combinedCommand = $"{predictScriptLocation} {modelPath} {imagePath}";
