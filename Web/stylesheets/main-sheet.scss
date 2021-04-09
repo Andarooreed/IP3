@@ -155,10 +155,52 @@ input[type="radio"]:checked+label {
 }
 
 .prediction-outcome {
+    position: absolute;
     text-align: center;
     font-size: 72px;
     margin-left: auto;
     margin-right: auto;
     width: 19em;
     border: solid #055757;
+}
+
+.middle-box {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    height: 90%;
+    padding: 10px;
+}
+
+.image-placeholder {
+    border: 3px solid #055757;
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.model-contents-placeholder {
+    border: 3px solid #055757;
+    border-radius: 5px;
+    width: 600px;
+    height: 180px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.model-contents-placeholder .content-image-placeholder {
+    border: 3px solid #055757;
+    border-radius: 5px;
+    width: 130px;
+    height: 130px;
+    margin: 20px;
+    box-shadow: 10px 10px 30px grey;
+    display: inline-block;
+}
+
+.middle-box .button-one {
+    margin: 30px 60px 0 60px;
 }
