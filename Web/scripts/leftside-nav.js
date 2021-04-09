@@ -1,12 +1,12 @@
 function openNav() {
     document.getElementById("leftside-nav").style.width = "370px";
-    document.getElementById("main").style.marginLeft = "370px";
+    // document.getElementById("main").style.marginLeft = "370px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeNav() {
     document.getElementById("leftside-nav").style.width = "72px";
-    document.getElementById("main").style.marginLeft = "72px";
+    // document.getElementById("main").style.marginLeft = "72px";
 }
 
 // element fade animations

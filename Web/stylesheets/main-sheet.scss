@@ -153,3 +153,12 @@ input[type="radio"]:checked+label {
         color: hsla(215, 5%, 25%, 1);
     }
 }
+
+.prediction-outcome {
+    text-align: center;
+    font-size: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 19em;
+    border: solid #055757;
+}

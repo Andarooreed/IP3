@@ -26,15 +26,28 @@ $json_array = json_decode($response, true);
         ?>
         <input type="file" name="fileToUpload" id="fileToUpload">
         <br>
-        <button type="submit" name="submit" id="predict" class="button-one">Predict</button>
+        <button class="button-one">Predict</button>
     </form>
 
     <div class="model-info">
         <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
     </div>
 </div>
-<div class="main-section">
+<div class="prediction-outcome">
 
-<?php echo $_SESSION["predictionLabel"] . " - " . $_SESSION["predictionResult"]; ?>
+    <?php
+
+        if(isset($_SESSION["predictionLabel"])){
+    $predictionsResultOutput = "This image is " . $_SESSION["predictionResult"] . "% like a " . $_SESSION["predictionLabel"];
+
+    if ($_SESSION["predictionLabel"] == "Cup" || $_SESSION["predictionLabel"] == "cup"){
+        $predictionsResultOutput = $predictionsResultOutput . " ☕";
+        
+    }
+    
+    echo $predictionsResultOutput;
+        }
+        
+    ?>
 
 </div>
