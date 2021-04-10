@@ -40,7 +40,6 @@ $json_array = json_decode($response, true);
         <div class="content-image-placeholder"></div>
     </div>
     <button class="button-one">Delete Model</button>
-    <button class="button-one">Edit Model</button>
     <button onclick="document.getElementById('runmodelmodal').style.display='block'" class="button-one">Run Model</button>
 
 

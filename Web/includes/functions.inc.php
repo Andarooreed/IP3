@@ -150,7 +150,6 @@ function addModel($conn, $userId, $imageGroupId, $name, $location)
 	exit();
 }
 
-
 function postImageForPrediction($fileName, $modelName)
 {
 	$data = array('key1' => 'value1', 'key2' => 'value2');
@@ -173,7 +172,7 @@ function postImageForPrediction($fileName, $modelName)
 	session_start();
 	$_SESSION["predictionLabel"] = $json_array['label'];
 	$_SESSION["predictionResult"] = $json_array['percentageResult'];
-	
+
 	header("location: ../index.php?page=models");
 	exit();
 }

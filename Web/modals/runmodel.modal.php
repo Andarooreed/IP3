@@ -4,7 +4,7 @@
   <!-- Modal Content -->
   <form class="modal-content animate" method="POST" action="./includes/upload.inc.php"  enctype="multipart/form-data">
     <div class="container">
-      <label for="model_name"><b>Name</b></label>
+      <label for="select"><b>Name</b></label>
       <input name="select" id="model-modal-input-name" type="text" readonly>
 
       <label for="fileToUpload"><b>Image</b></label>
