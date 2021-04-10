@@ -12,7 +12,7 @@ $json_array = json_decode($response, true);
 
 ?>
 <div class="leftside-modelnav">
-<h3><strong>Models</strong></h3>
+    <h3><strong>Models</strong></h3>
     <form method="POST" action="./includes/upload.inc.php" enctype="multipart/form-data">
         <?php
         foreach ($json_array as $model) {
@@ -34,11 +34,11 @@ $json_array = json_decode($response, true);
     </div>
 </div>
 
-<div class="middle-box">
-    
+<div class="middle-box" style="display:none;">
+
     <div class="image-placeholder"></div>
-    <h3 id="model-title">Model Name</h3>
-    <h4>Description of models function</h4>
+    <h3 id="model-title">Select a model from the side menu</h3>
+    <h4 id="model-description">Description of models function</h4>
     <div class="model-contents-placeholder">
         <div class="content-image-placeholder"></div>
         <div class="content-image-placeholder"></div>
@@ -47,8 +47,9 @@ $json_array = json_decode($response, true);
     <button class="button-one">Delete Model</button>
     <button class="button-one">Edit Model</button>
     <button class="button-one">Run Model</button>
-</div>
 
+    
+</div>
 <div class="prediction-outcome">
 
     <?php
@@ -67,8 +68,17 @@ $json_array = json_decode($response, true);
 
 </div>
 
+
 <script>
-   $('input[name="select"]').on('change', function(){   
+    $('input[name="select"]').on('change', function() {
+        $(".middle-box").show();
+        $(".prediction-outcome").hide();
         $("#model-title").text($(this).val());
-});
+        $("#model-description").text("You selected something");
+    });
+
+
+    if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
 </script>
