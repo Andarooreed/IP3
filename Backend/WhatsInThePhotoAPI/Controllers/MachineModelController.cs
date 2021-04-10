@@ -55,14 +55,11 @@ namespace WhatsInThePhotoAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [Route("api/[controller]/TrainModel")]
-        public async Task<IActionResult> TrainModel(MachineModel machineModel)
+        public async Task<IActionResult> TrainModel(string folderName)
         {
             const string trainingScriptLocation = @"Scripts\TrainModel.py";
 
-            string imagePath = Path.GetFullPath($"TemporaryImages\\{machineModel.Name}");
-            string modelPath = Path.GetFullPath($"MachineModels\\{machineModel.Name}");
-
-            string combinedCommand = $"{trainingScriptLocation} {modelPath} {imagePath}";
+            string combinedCommand = $"{trainingScriptLocation} {folderName} ";
 
             string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 
@@ -81,9 +78,9 @@ namespace WhatsInThePhotoAPI.Controllers
             string combinedCommand = $"{downloadImagesScriptLocation} {imageDownloadQuery} {imageAmount}";
 
             string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
-
             return Ok(returnValue);
         }
+
 
         [HttpPost]
         [ProducesResponseType(200)]

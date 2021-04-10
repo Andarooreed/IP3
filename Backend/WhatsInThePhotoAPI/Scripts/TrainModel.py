@@ -15,11 +15,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from functions.folder_fixer import folder_fixer
-
-# Read Config
-cf = configparser.ConfigParser()
-cf.read('ML/config.ini')
+from folder_fixer import folder_fixer
 
 # Variable - [Image Folder Location] [OPTIONAL: Epochs]
 
@@ -28,20 +24,9 @@ try:
     source_folder = sys.argv[1]
 except:
     # Load the default test data if testing set to true, otherwise exit
-    if int(cf['test_list']['train_arnold']) == 1:
-        source_folder = "ML/user_images/24601-Hugh_Man-Cups"
-        epochs = 2   
-    else:
         print("Source Folder not found.")
         raise SystemExit
 
-try:
-    len(sys.argv[2])
-    epochs = int(sys.argv[2])
-except:
-    if int(cf['test_list']['train_arnold']) == 1:
-        epochs = 2   
-    else:
         epochs = 15
 
 img_size = (180, 180)
@@ -138,7 +123,7 @@ model = make_model(input_shape=img_size + (3,), num_classes = 2)
 epochs = epochs 
 
 callbacks = [
-    keras.callbacks.ModelCheckpoint("ML/ML_Core/models/callbacks/" + working_dir["source_id"] + "_at_{epoch}.h5")
+    keras.callbacks.ModelCheckpoint("models/callbacks/" + working_dir["source_id"] + "_at_{epoch}.h5")
 ]
 
 model.compile(
@@ -155,4 +140,4 @@ model.fit(
 name = working_dir["source_id"] + "-" + working_dir["source_label"] + ".h5"
 
 # Save it
-model.save("ML/ML_Core/models/" + name)
+model.save("../MachineModels/" + name)
