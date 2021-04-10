@@ -13,21 +13,16 @@ $json_array = json_decode($response, true);
 ?>
 <div class="leftside-modelnav">
     <h3><strong>Models</strong></h3>
-    <form method="POST" action="./includes/upload.inc.php" enctype="multipart/form-data">
-        <?php
-        foreach ($json_array as $model) {
-        ?>
-            <div class="display-models">
-                <input style="display: none;" type="radio" id="<?php echo $model['name'] ?>" name="select" value="<?php echo $model['name'] ?>">
-                <label for="<?php echo $model['name'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
-            </div>
-        <?php
-        }
-        ?>
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <br>
-        <button class="button-one">Predict</button>
-    </form>
+    <?php
+    foreach ($json_array as $model) {
+    ?>
+        <div class="display-models">
+            <input style="display: none;" type="radio" id="<?php echo $model['name'] ?>" name="select" value="<?php echo $model['name'] ?>">
+            <label for="<?php echo $model['name'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
+        </div>
+    <?php
+    }
+    ?>
 
     <div class="model-info">
         <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
@@ -46,9 +41,9 @@ $json_array = json_decode($response, true);
     </div>
     <button class="button-one">Delete Model</button>
     <button class="button-one">Edit Model</button>
-    <button class="button-one">Run Model</button>
+    <button onclick="document.getElementById('runmodelmodal').style.display='block'" class="button-one">Run Model</button>
 
-    
+
 </div>
 <div class="prediction-outcome">
 
@@ -60,7 +55,9 @@ $json_array = json_decode($response, true);
         if ($_SESSION["predictionLabel"] == "Cup" || $_SESSION["predictionLabel"] == "cup") {
             $predictionsResultOutput = $predictionsResultOutput . " ☕";
         }
-
+    ?>
+        <h2>Your latest run:</h2>
+    <?php
         echo $predictionsResultOutput;
     }
 
@@ -74,11 +71,12 @@ $json_array = json_decode($response, true);
         $(".middle-box").show();
         $(".prediction-outcome").hide();
         $("#model-title").text($(this).val());
+        $("#model-modal-input-name").val($(this).val());
         $("#model-description").text("You selected something");
     });
 
 
-    if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
