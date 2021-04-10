@@ -30,7 +30,7 @@ $json_array = json_decode($response, true);
     </form>
 
     <div class="model-info">
-        <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Add model</button>
+        <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">HIDY HO MOTHER FUCKER</button>
     </div>
 </div>
 

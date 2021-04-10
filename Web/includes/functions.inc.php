@@ -177,3 +177,31 @@ function postImageForPrediction($fileName, $modelName)
 	header("location: ../index.php?page=models");
 	exit();
 }
+
+## Daniel
+function postImagesForTraining($fileName, $modelName)
+{
+	$data = array('key1' => 'value1', 'key2' => 'value2');
+
+	$arrContextOptions = array(
+		"ssl" => array(
+			"verify_peer" => false,
+			"verify_peer_name" => false,
+		),
+		"http" => array(
+			'header'  => "Content-type: application/json; charset=utf-8",
+			'method'  => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+
+	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/Identify?filename=$fileName&modelName=$modelName", false, stream_context_create($arrContextOptions));
+
+	$json_array = json_decode($response, true);
+	session_start();
+	$_SESSION["predictionLabel"] = $json_array['label'];
+	$_SESSION["predictionResult"] = $json_array['percentageResult'];
+	
+	header("location: ../index.php?page=models");
+	exit();
+}

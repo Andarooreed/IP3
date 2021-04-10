@@ -1,19 +1,52 @@
 <?php
 
+require_once "connection.inc.php";
+require_once 'functions.inc.php';
+
 if (isset($_POST["submit"])) {
 
-  $userId = 1;
-  $imageGroupId = 1;
-  $name = $_POST["model_name"];
-  $location = $_POST["model_location"];
+  // Get images
+  $count_imagula = count($_FILES['file']['name']);
 
-  require_once "connection.inc.php";
-  require_once 'functions.inc.php';
+  // Build target directory
+  $model_name = $_POST["model_name"];
+  $user_name =  "TestIcle" ;//$_SESSION["user_id"];
+  $user_id =   "666" ;//$_SESSION["username"];
+
+  $target_dir = "../../Backend/WhatsInThePhotoAPI/UserUploads/" . strval($user_id) . "-" . $user_name . "-" . $model_name . "/" ;
+  mkdir($target_dir, 0777, true);
+
+  // Get some other shit
+  $image_group_id = 1;
+
+    echo "hello<br/>";
+    echo "COUNT: " . $count_imagula;
+
+  // Loop through the images and upload them
+  for ($loopie_boi = 0; $loopie_boi < $count_imagula; $loopie_boi++){
+    echo '<br/> ' . $loopie_boi;
+    // Do Stuff
+    $target_file = $target_dir . basename($_FILES["file"]["name"][$loopie_boi]);
+    echo '<br/> ' . $target_file;
+    $postFileName = htmlspecialchars( basename( $_FILES["file"]["name"][$loopie_boi]));
+    echo '<br/> ' . $postFileName;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    echo '<br/>' . $imageFileType;
+    echo '<Br/> file name: ' . $_FILES["file"]["name"][$loopie_boi];
+
+    // Upload File  (Gets shoved to a temp location so need to reference it as tmp_name, still saves as expected because it's defined in target_file)
+    move_uploaded_file($_FILES["file"]["tmp_name"][$loopie_boi], $target_file);
+
+  }
+
+  
 
 
-  addModel($conn, $userId, $imageGroupId, $name, $location);
+
+
+  //addModel($conn, $userId, $imageGroupId, $name, $location);
 
   header("location: ../index.php?page=models");
-    exit();
+  exit();
 
 }
