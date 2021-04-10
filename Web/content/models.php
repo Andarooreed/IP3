@@ -49,11 +49,16 @@ $json_array = json_decode($response, true);
     <?php
 
     if (isset($_SESSION["predictionLabel"])) {
-        $predictionsResultOutput = "This image is " . $_SESSION["predictionResult"] . "% like a " . $_SESSION["predictionLabel"];
 
+        if($_SESSION["predictionResult"] == 100) {
+            $predictionsResultOutput = "This image " . $_SESSION["predictionResult"] . "% is a " . $_SESSION["predictionLabel"];
+        } else {
+        $predictionsResultOutput = "This image is " . $_SESSION["predictionResult"] . "% like a " . $_SESSION["predictionLabel"];
+        }
         if ($_SESSION["predictionLabel"] == "Cup" || $_SESSION["predictionLabel"] == "cup") {
             $predictionsResultOutput = $predictionsResultOutput . " ☕";
         }
+
     ?>
         <h2>Your latest run:</h2>
     <?php
