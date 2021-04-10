@@ -36,6 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Scripts\models\callbacks\" />
+    <Folder Include="Scripts\working_directory\00000-Standard-Standard\" />
     <Folder Include="User_Images\" />
     <Folder Include="TemporaryImages\" />
   </ItemGroup>
