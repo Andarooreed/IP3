@@ -35,16 +35,14 @@ if (isset($_POST["submit"])) {
     echo '<Br/> file name: ' . $_FILES["file"]["name"][$loopie_boi];
 
     // Upload File  (Gets shoved to a temp location so need to reference it as tmp_name, still saves as expected because it's defined in target_file)
+    // Max uploads has been changed in the xamp\php\php.ini file - see the discord snip for reference
     move_uploaded_file($_FILES["file"]["tmp_name"][$loopie_boi], $target_file);
 
   }
 
-  
-
-
-
-
   //addModel($conn, $userId, $imageGroupId, $name, $location);
+  postImagesForTraining($target_dir);
+
 
   header("location: ../index.php?page=models");
   exit();

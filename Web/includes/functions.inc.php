@@ -179,7 +179,7 @@ function postImageForPrediction($fileName, $modelName)
 }
 
 ## Daniel
-function postImagesForTraining($fileName, $modelName)
+function postImagesForTraining($folderName)
 {
 	$data = array('key1' => 'value1', 'key2' => 'value2');
 
@@ -195,12 +195,12 @@ function postImagesForTraining($fileName, $modelName)
 		)
 	);
 
-	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/Identify?filename=$fileName&modelName=$modelName", false, stream_context_create($arrContextOptions));
+	$folderName = str_replace("/","XXX",$folderName);
+	$folderName = str_replace("\\","XXX",$folderName);
+	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/TrainModel?folderName=$folderName", false, stream_context_create($arrContextOptions));
 
 	$json_array = json_decode($response, true);
 	session_start();
-	$_SESSION["predictionLabel"] = $json_array['label'];
-	$_SESSION["predictionResult"] = $json_array['percentageResult'];
 	
 	header("location: ../index.php?page=models");
 	exit();

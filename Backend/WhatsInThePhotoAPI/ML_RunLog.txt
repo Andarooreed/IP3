@@ -1,0 +1,144 @@
+Recieved by folder_fixer
+Recieved call to TrainModel
+Recieved input: C:/Users/danie/OneDrive/Documents/Uni
+Passing to folder_fixer
+Recieved by folder_fixer
+Recieved call to TrainModel
+Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+Passing to folder_fixer
+Folders Fixed, returning to Arnold
+Returned to Arnold
+Generating dataset - train
+2021/04/12 11:44:29 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 11:44:32 Tensorflow? 2.4.1
+2021/04/12 11:44:32 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 11:44:32 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 11:44:33 Returned to Arnold
+2021/04/12 11:44:33 Generating dataset - train
+2021/04/12 11:44:33 Generating dataset - validate
+2021/04/12 11:44:33 Doing augemntation
+2021/04/12 11:44:33 Calling make_model to... make model
+2021/04/12 11:44:33 Running Make_Model
+2021/04/12 11:44:33 Model Compliling
+2021/04/12 11:44:33 Model Fitting
+2021/04/12 11:47:15 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 11:47:18 Tensorflow? 2.4.1
+2021/04/12 11:47:18 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 11:47:18 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 11:47:18 Returned to Arnold
+2021/04/12 11:47:18 Generating dataset - train
+2021/04/12 11:47:18 Generating dataset - validate
+2021/04/12 11:47:18 Doing augemntation
+2021/04/12 11:47:18 Calling make_model to... make model
+2021/04/12 11:47:18 Running Make_Model
+2021/04/12 11:47:19 Model Compliling
+2021/04/12 11:47:19 Model Fitting
+2021/04/12 11:50:56 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 11:50:59 Tensorflow? 2.4.1
+2021/04/12 11:50:59 Recieved input: dfasasdfsdf
+2021/04/12 11:50:59 Passing to folder_fixer
+2021/04/12 11:51:19 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 11:51:22 Tensorflow? 2.4.1
+2021/04/12 11:51:22 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 11:51:22 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 11:51:22 Returned to Arnold
+2021/04/12 11:51:22 Generating dataset - train
+2021/04/12 11:51:22 Generating dataset - validate
+2021/04/12 11:51:22 Doing augemntation
+2021/04/12 11:51:22 Calling make_model to... make model
+2021/04/12 11:51:22 Running Make_Model
+2021/04/12 11:51:23 Model Compliling
+2021/04/12 11:51:23 Model Fitting
+2021/04/12 11:54:03 Model saved at ../MachineModels/666-tyfrtytfh.h5
+2021/04/12 18:34:15 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 18:34:19 Tensorflow? 2.4.1
+2021/04/12 18:34:19 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 18:34:19 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 18:34:19 Returned to Arnold
+2021/04/12 18:34:19 Generating dataset - train
+2021/04/12 18:34:19 Generating dataset - validate
+2021/04/12 18:34:19 Doing augemntation
+2021/04/12 18:34:19 Calling make_model to... make model
+2021/04/12 18:34:19 Running Make_Model
+2021/04/12 18:34:20 Model Compliling
+2021/04/12 18:34:20 Model Fitting
+2021/04/12 18:36:41 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 18:36:43 Tensorflow? 2.4.1
+2021/04/12 18:36:43 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 18:36:43 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 18:36:44 Returned to Arnold
+2021/04/12 18:36:44 Generating dataset - train
+2021/04/12 18:36:44 Generating dataset - validate
+2021/04/12 18:36:44 Doing augemntation
+2021/04/12 18:36:44 Calling make_model to... make model
+2021/04/12 18:36:44 Running Make_Model
+2021/04/12 18:36:44 Model Compliling
+2021/04/12 18:36:44 Model Fitting
+2021/04/12 18:41:42 Recieved call to TrainModel
+2021/04/12 18:41:44 Recieved call to TrainModel
+2021/04/12 18:42:09 Recieved call to TrainModel
+2021/04/12 18:43:04 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 18:43:07 Tensorflow? 2.4.1
+2021/04/12 18:43:07 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 18:43:07 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 18:43:07 Returned to Arnold
+2021/04/12 18:43:07 Generating dataset - train
+2021/04/12 18:43:07 Generating dataset - validate
+2021/04/12 18:43:07 Doing augemntation
+2021/04/12 18:43:07 Calling make_model to... make model
+2021/04/12 18:43:07 Running Make_Model
+2021/04/12 18:43:08 Model Compliling
+2021/04/12 18:43:08 Model Fitting
+2021/04/12 18:45:49 Model saved at ../MachineModels/666-tyfrtytfh.h5
+2021/04/12 18:49:13 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 18:49:15 Tensorflow? 2.4.1
+2021/04/12 18:49:15 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 18:49:16 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 18:49:16 Returned to Arnold
+2021/04/12 18:49:16 Generating dataset - train
+2021/04/12 18:49:16 Generating dataset - validate
+2021/04/12 18:49:16 Doing augemntation
+2021/04/12 18:49:16 Calling make_model to... make model
+2021/04/12 18:49:16 Running Make_Model
+2021/04/12 18:49:17 Model Compliling
+2021/04/12 18:49:17 Model Fitting
+2021/04/12 18:52:05 Model saved at ../MachineModels/666-tyfrtytfh.h5
+2021/04/12 18:55:22 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+Recieved by folder_fixer
+2021/04/12 18:55:24 Tensorflow? 2.4.1
+2021/04/12 18:55:24 Recieved input: C:/xampp/htdocs/IP3/Backend/WhatsInThePhotoAPI/UserUploads/666-TestIcle-tyfrtytfh
+2021/04/12 18:55:24 Passing to folder_fixer
+Folders Fixed, returning to Arnold
+2021/04/12 18:55:25 Returned to Arnold
+2021/04/12 18:55:25 Generating dataset - train
+2021/04/12 18:55:25 Generating dataset - validate
+2021/04/12 18:55:25 Doing augemntation
+2021/04/12 18:55:25 Calling make_model to... make model
+2021/04/12 18:55:25 Running Make_Model
+2021/04/12 18:55:26 Model Compliling
+2021/04/12 18:55:26 Model Fitting
+2021/04/12 18:58:05 Model saved at ../MachineModels/666-tyfrtytfh.h5

@@ -59,7 +59,8 @@ namespace WhatsInThePhotoAPI.Controllers
         {
             const string trainingScriptLocation = @"Scripts\TrainModel.py";
 
-            string combinedCommand = $"{trainingScriptLocation} {folderName} ";
+           string combinedCommand = $"{trainingScriptLocation} {folderName} ";
+            
 
             string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 

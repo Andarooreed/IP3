@@ -3,8 +3,8 @@ from random import randint
 from shutil import copy, rmtree
 
 def folder_fixer(source_location):
-    root_folder_path= "C:/Users/Jargar/Source/Repos/Andarooreed/IP3/Backend/WhatsInThePhotoAPI/Scripts/working_directory"
-    source_folder_path = source_location
+    root_folder_path= "Scripts/working_directory"
+    source_folder_path = source_location.replace("XXX","/")
     source_folder = os.path.basename(os.path.normpath(source_folder_path))
     target_folder_path = root_folder_path + "/" + source_folder
 
@@ -71,9 +71,9 @@ def folder_fixer(source_location):
         i += 1
 
     # Whilst we're here, clear callbacks
-    if os.path.exists("ML/ML_Core/models/callbacks/"):
-        rmtree("ML/ML_Core/models/callbacks/")
-        os.mkdir("ML/ML_Core/models/callbacks/")
+    if os.path.exists("Scripts/models/callbacks/"):
+        rmtree("Scripts/models/callbacks/")
+        os.mkdir("Scripts/models/callbacks/")
 
     # Set retuns
     data = {
@@ -88,5 +88,3 @@ def folder_fixer(source_location):
    
     return data
 
-#test = folder_fixer("C:/Users/danie/OneDrive/Documents/git/IP3/Backend/ML/user_images/24601-Hugh_Man-Cups")
-#print(test)
