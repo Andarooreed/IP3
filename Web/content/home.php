@@ -1,33 +1,14 @@
-<?php
-$arrContextOptions = array(
-	"ssl" => array(
-		"verify_peer" => false,
-		"verify_peer_name" => false,
-	),
-);
+<div class="home-display">
 
-$response = file_get_contents("https://localhost:44317/api/MachineModel", false, stream_context_create($arrContextOptions));
+	<h1 style="text-align: center;">What's in the box?</h1>
+	<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat semper viverra nam libero justo laoreet sit amet cursus. Elementum sagittis vitae et leo duis ut diam quam. Odio pellentesque diam volutpat commodo sed. Tellus id interdum velit laoreet. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Amet aliquam id diam maecenas ultricies mi. Blandit turpis cursus in hac habitasse platea dictumst. Gravida arcu ac tortor dignissim convallis aenean et tortor. Consequat semper viverra nam libero justo laoreet. Dui id ornare arcu odio. Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed. Neque sodales ut etiam sit amet. Purus sit amet luctus venenatis lectus. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Sapien nec sagittis aliquam malesuada bibendum arcu. Cras pulvinar mattis nunc sed blandit libero. Proin sed libero enim sed faucibus.
 
-$json_array = json_decode($response, true);
+		Sit amet volutpat consequat mauris nunc congue nisi. Etiam erat velit scelerisque in. Ut ornare lectus sit amet est placerat in. Leo vel fringilla est ullamcorper eget nulla. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Consectetur a erat nam at. Nunc eget lorem dolor sed viverra ipsum. Lacus sed viverra tellus in hac habitasse. Donec ac odio tempor orci dapibus ultrices. Orci phasellus egestas tellus rutrum tellus pellentesque. Egestas egestas fringilla phasellus faucibus scelerisque eleifend. Ipsum nunc aliquet bibendum enim facilisis gravida. Aliquam purus sit amet luctus venenatis lectus magna fringilla urna.
 
-function display_array_recursive($json_rec){
-	if($json_rec){
-		foreach($json_rec as $key=> $value){
-			if(is_array($value)){
-				display_array_recursive($value);
-				echo '<br>';
-			}else{
-				$output =$key.': '.$value.'<br>';
-				echo $output;
-			}	
-		}	
-	}
-}
+		Nam aliquam sem et tortor consequat. Feugiat scelerisque varius morbi enim nunc faucibus a. Egestas sed tempus urna et pharetra pharetra massa massa ultricies. Dictum sit amet justo donec enim diam vulputate. Condimentum id venenatis a condimentum vitae. Diam sollicitudin tempor id eu nisl nunc mi ipsum. Venenatis lectus magna fringilla urna porttitor. Eget felis eget nunc lobortis mattis aliquam faucibus purus in. Facilisi morbi tempus iaculis urna id volutpat lacus. Ultrices gravida dictum fusce ut. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Non enim praesent elementum facilisis leo vel. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Eu volutpat odio facilisis mauris sit. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum.
 
-?>
+		Dui sapien eget mi proin sed libero enim sed faucibus. Maecenas accumsan lacus vel facilisis volutpat est velit. Enim lobortis scelerisque fermentum dui faucibus. Consectetur a erat nam at lectus urna duis convallis. Fringilla ut morbi tincidunt augue interdum. Id ornare arcu odio ut sem nulla pharetra diam. Sagittis nisl rhoncus mattis rhoncus urna neque. Consectetur lorem donec massa sapien faucibus et molestie ac. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi. Pharetra pharetra massa massa ultricies mi quis. Enim ut sem viverra aliquet eget sit. Venenatis a condimentum vitae sapien pellentesque habitant. Id volutpat lacus laoreet non curabitur gravida arcu ac tortor. Ac turpis egestas sed tempus urna et pharetra pharetra. Mauris augue neque gravida in fermentum et sollicitudin ac orci. Morbi tristique senectus et netus et malesuada. Ullamcorper sit amet risus nullam eget felis eget. Non curabitur gravida arcu ac. Quis hendrerit dolor magna eget est lorem ipsum. Et malesuada fames ac turpis egestas.
 
-<div class=model-info-test-display>
-	<?php 
-	display_array_recursive($json_array) ;
-	?>
+		Libero nunc consequat interdum varius sit amet. Lectus proin nibh nisl condimentum id venenatis a condimentum. Sed nisi lacus sed viverra tellus in hac. Leo integer malesuada nunc vel risus commodo viverra maecenas. Vel orci porta non pulvinar neque. Et malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent. A cras semper auctor neque. Sit amet justo donec enim diam vulputate ut pharetra sit. Sed blandit libero volutpat sed. Sed euismod nisi porta lorem.
+	</p>
 </div>
