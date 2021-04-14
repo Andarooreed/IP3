@@ -5,10 +5,10 @@
   <!-- Modal Content -->
   <form class="modal-content animate" action="includes/login.inc.php" method="post">
     <div class="container">
-      <label for="uid"><b>Username/email</b></label>
+      <label for="uid"><strong>Username/email</strong></label>
       <input type="text" placeholder="Enter username or email" name="uid">
 
-      <label for="pwd"><b>Password</b></label>
+      <label for="pwd"><strong>Password</strong></label>
       <input type="password" placeholder="Enter password" name="pwd">
 
       <button type="submit" name="submit" class="button-one">Login</button>

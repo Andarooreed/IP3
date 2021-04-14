@@ -8,13 +8,13 @@
       <label for="name">Name</label>
       <input type="text" placeholder="Enter full name" name=name>
 
-      <label for="email"><b>Email address</b></label>
+      <label for="email"><strong>Email address</strong></label>
       <input type="text" placeholder="Enter email" name="email">
 
-      <label for="uid"><b>Username</b></label>
+      <label for="uid"><strong>Username</strong></label>
       <input type="text" placeholder="Enter username" name="uid">
 
-      <label for="pwd"><b>Password</b></label>
+      <label for="pwd"><strong>Password</strong></label>
       <input type="password" placeholder="Enter Password" name="pwd">
       <input type="password" placeholder="Repeat password" name="pwdrepeat">
 
