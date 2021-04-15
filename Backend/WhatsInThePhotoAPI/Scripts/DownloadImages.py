@@ -1,5 +1,6 @@
 # Use some google shenanigary to download image sets for use during development
 # DM 2021-02-12
+# DM 2021-04-14 Updated for use as a production function to suppliment user image sets
 # Reference https://github.com/RiddlerQ/simple_image_download
 
 import sys
@@ -23,7 +24,7 @@ except:
     limit = 5
 
 print(os.getcwd())
-os.chdir("User_Images")
+os.chdir("UserUploads")
 print(os.getcwd())
 
 response = simp.simple_image_download

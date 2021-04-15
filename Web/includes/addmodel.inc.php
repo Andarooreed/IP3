@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 require_once "connection.inc.php";
 require_once 'functions.inc.php';
@@ -9,30 +9,41 @@ if (isset($_POST["submit"])) {
   $count_imagula = count($_FILES['file']['name']);
 
   // Build target directory
-  $model_name = $_POST["model_name"];
-  $user_name =  "TestIcle" ;//$_SESSION["user_id"];
-  $user_id =   "666" ;//$_SESSION["username"];
-
+  $model_name = str_replace(" ","_",$_POST["model_name"]);
+  $user_name =  $_SESSION["username"];
+  $user_id =   $_SESSION["user_id"]; // I think this is actually supposed to be a model id or something, I forget.
   $target_dir = "../../Backend/WhatsInThePhotoAPI/UserUploads/" . strval($user_id) . "-" . $user_name . "-" . $model_name . "/" ;
   mkdir($target_dir, 0777, true);
 
   // Get some other shit
   $image_group_id = 1;
+  $simp_vol = $_POST["simp_vol"];
 
-    echo "hello<br/>";
-    echo "COUNT: " . $count_imagula;
+  // Get any suplimentary images and add them to the users stuff
+  if ($simp_vol > 0){
+    // Get images
+    //supplimentUserImageSet($model_name, $simp_vol);
+    supplimentUserImageSet($model_name, 5);
+  //  sleep(30);
+
+    // Open the save location and move each file to the target dir
+   $source_folder = "../../Backend/WhatsInThePhotoAPI/UserUploads/simple_images/" . $model_name;
+ 
+    // GLOB
+    $files = glob($source_folder . "/*");
+    foreach ($files as $curr_file){
+      $new_path = $target_dir . pathinfo($curr_file, PATHINFO_BASENAME);
+      rename($curr_file, $new_path);
+    }
+
+  }
 
   // Loop through the images and upload them
   for ($loopie_boi = 0; $loopie_boi < $count_imagula; $loopie_boi++){
-    echo '<br/> ' . $loopie_boi;
     // Do Stuff
     $target_file = $target_dir . basename($_FILES["file"]["name"][$loopie_boi]);
-    echo '<br/> ' . $target_file;
     $postFileName = htmlspecialchars( basename( $_FILES["file"]["name"][$loopie_boi]));
-    echo '<br/> ' . $postFileName;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    echo '<br/>' . $imageFileType;
-    echo '<Br/> file name: ' . $_FILES["file"]["name"][$loopie_boi];
 
     // Upload File  (Gets shoved to a temp location so need to reference it as tmp_name, still saves as expected because it's defined in target_file)
     // Max uploads has been changed in the xamp\php\php.ini file - see the discord snip for reference
@@ -41,10 +52,11 @@ if (isset($_POST["submit"])) {
   }
 
   //addModel($conn, $userId, $imageGroupId, $name, $location);
-  postImagesForTraining($target_dir);
+ // postImagesForTraining($target_dir);
+
+ // header("location: ../index.php?page=models");
 
 
-  header("location: ../index.php?page=models");
-  exit();
+ // exit();
 
 }

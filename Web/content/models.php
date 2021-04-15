@@ -25,7 +25,7 @@ $json_array = json_decode($response, true);
     ?>
 
     <div class="model-info">
-        <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">HIDY HO MOTHER FUCKER</button>
+        <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Create & Train a Model!</button>
     </div>
 </div>
 

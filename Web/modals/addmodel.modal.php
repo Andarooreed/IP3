@@ -4,12 +4,19 @@
   <!-- Modal Content -->
   <form class="modal-content animate" action="includes/addmodel.inc.php" method="post" enctype='multipart/form-data'>
     <div class="container">
-      <label for="model_name"><b>Name</b></label>
+      <label for="model_name"><b>Model Name (What's in the photos?)</b></label>
       <input type="text" placeholder="Model name" name="model_name">
 
       <!-- Enable form to select multiple items -->
-      <label for="model_location"><b>Files, Bitch</b></label>
+      <label for="model_location"><b>Training FIles</b></label>
       <input type="file"  name="file[]" multiple="true">
+
+      <label for="simppy"><b>Suppliment Image Set?</b></label>
+      <input type="radio"  name="simp_vol" value=0 checked="checked"> Nah. <br/>
+      <input type="radio"  name="simp_vol" value=100> +100 <br/>
+      <input type="radio"  name="simp_vol" value=500> +500 <br/>
+      <input type="radio"  name="simp_vol" value=1000> +1,000 <br/>
+      <input type="radio"  name="simp_vol" value=2000> +2,000 <br/>
 
       <button type="submit" name="submit" class="button-one">Add model</button>
     </div>

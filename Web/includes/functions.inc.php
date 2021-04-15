@@ -204,3 +204,31 @@ function postImagesForTraining($folderName)
 	header("location: ../index.php?page=models");
 	exit();
 }
+
+function supplimentUserImageSet($simp_query, $simp_vol)
+{
+	$data = array('key1' => 'value1', 'key2' => 'value2');
+
+	$arrContextOptions = array(
+		"ssl" => array(
+			"verify_peer" => false,
+			"verify_peer_name" => false,
+		),
+		"http" => array(
+			'header'  => "Content-type: application/json; charset=utf-8",
+			'method'  => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+
+	// Stick the search term in quotes
+	$simp_query = "\"" . $simp_query . "\"";
+
+	$response = file_get_contents("https://localhost:44317/api/MachineModel/api/MachineModel/DownloadImage?imageDownloadQuery=$simp_query&imageAmount=$simp_vol", false, stream_context_create($arrContextOptions));
+
+	$json_array = json_decode($response, true);
+	session_start();
+	
+//	header("location: ../index.php?page=models");
+	//exit();
+}
