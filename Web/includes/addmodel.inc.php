@@ -24,18 +24,18 @@ if (isset($_POST["submit"])) {
     // Get images
     //supplimentUserImageSet($model_name, $simp_vol);
     supplimentUserImageSet($model_name, 5);
-  //  sleep(30);
 
     // Open the save location and move each file to the target dir
-   $source_folder = "../../Backend/WhatsInThePhotoAPI/UserUploads/simple_images/" . $model_name;
- 
-    // GLOB
-    $files = glob($source_folder . "/*");
-    foreach ($files as $curr_file){
-      $new_path = $target_dir . pathinfo($curr_file, PATHINFO_BASENAME);
-      rename($curr_file, $new_path);
+    $source_folder = "../../Backend/WhatsInThePhotoAPI/UserUploads/simple_images/" . $model_name;
+    // Make sure this variable is set or it will move your entire root directory... don't ask
+    if (isset($source_folder)){
+      // GLOB
+      $files = glob($source_folder . "/*");
+      foreach ($files as $curr_file){
+        $new_path = $target_dir . pathinfo($curr_file, PATHINFO_BASENAME);
+        rename($curr_file, $new_path);
+      }
     }
-
   }
 
   // Loop through the images and upload them
