@@ -27,9 +27,13 @@ if (isset($_SESSION["user_id"])) { ?>
         <?php
         if ($_GET["page"] == "login-none") {
             include_once './content/home.php';
-        } else if($_GET["page"] == "home") {
+        } else if ($_GET["page"] == "home") {
             include_once './content/home.php';
         } else if ($_GET["page"] == "models") {
+            include_once './content/models.php';
+        } else if ($_GET["page"] == "runuploadsuccess") {
+            include_once './content/models.php';
+        } else if ($_GET["page"] == "runuploadfailure") {
             include_once './content/models.php';
         }
         ?>

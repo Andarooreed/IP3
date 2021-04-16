@@ -29,3 +29,19 @@
         <span class="fas fa-times"></span>
     </span>
 </div>
+
+<div class="runsuccessalert success hide">
+    <span class="fas fa-running"></span>
+    <span class="msg"><strong>Run successful</strong></span>
+    <span class="close-btn">
+        <span class="fas fa-times"></span>
+    </span>
+</div>
+
+<div class="runfailurealert failure hide">
+    <span class="fas fa-running"></span>
+    <span class="msg"><strong>Run failed</strong></span>
+    <span class="close-btn">
+        <span class="fas fa-times"></span>
+    </span>
+</div>

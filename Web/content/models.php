@@ -17,8 +17,8 @@ $json_array = json_decode($response, true);
     foreach ($json_array as $model) {
     ?>
         <div class="display-models">
-            <input style="display: none;" type="radio" id="<?php echo $model['name'] ?>" name="select" value="<?php echo $model['name'] ?>">
-            <label for="<?php echo $model['name'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
+            <input style="display: none;" type="radio" id="<?php echo $model['modelId'] ?>" name="select" value="<?php echo $model['name'] ?>">
+            <label for="<?php echo $model['modelId'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
         </div>
     <?php
     }
@@ -33,7 +33,6 @@ $json_array = json_decode($response, true);
 
     <div class="image-placeholder"></div>
     <h3 id="model-title">Select a model from the side menu</h3>
-    <h4 id="model-description">Description of models function</h4>
     <div class="model-contents-placeholder">
         <div class="content-image-placeholder"></div>
         <div class="content-image-placeholder"></div>
@@ -76,7 +75,6 @@ $json_array = json_decode($response, true);
         $(".prediction-outcome").hide();
         $("#model-title").text($(this).val());
         $("#model-modal-input-name").val($(this).val());
-        $("#model-description").text("You selected something");
     });
 
 

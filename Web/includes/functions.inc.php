@@ -173,6 +173,6 @@ function postImageForPrediction($fileName, $modelName)
 	$_SESSION["predictionLabel"] = $json_array['label'];
 	$_SESSION["predictionResult"] = $json_array['percentageResult'];
 
-	header("location: ../index.php?page=models");
+	header("location: ../index.php?page=runuploadsuccess");
 	exit();
 }
