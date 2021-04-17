@@ -224,3 +224,33 @@ Falling back to TensorFlow client; we recommended you install the Cloud TPU clie
 2021/04/15 19:08:34 Model Compliling
 2021/04/15 19:08:34 Model Fitting
 2021/04/15 19:09:08 Model saved at Scripts/models/3-fire.h5
+2021/04/16 08:34:38 Execution running from C:\xampp\htdocs\IP3\Backend\WhatsInThePhotoAPI
+2021/04/16 08:34:38 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2021/04/16 08:34:44 Tensorflow? 2.4.1
+2021/04/16 08:34:44 Recieved input: ../../Backend/WhatsInThePhotoAPI/UserUploads/3-Person20-moths/
+2021/04/16 08:34:44 Passing to folder_fixer
+2021/04/16 08:34:45 Returned to Arnold
+2021/04/16 08:34:45 Generating dataset - train
+2021/04/16 08:34:45 Generating dataset - validate
+2021/04/16 08:34:45 Doing augemntation
+2021/04/16 08:34:45 Calling make_model to... make model
+2021/04/16 08:34:45 Running Make_Model
+2021/04/16 08:34:45 Model Compliling
+2021/04/16 08:34:45 Model Fitting
+2021/04/16 08:35:29 Model saved at Scripts/models/3-moths.h5
+2021/04/17 14:26:08 Execution running from C:\xampp\htdocs\IP3\Backend\WhatsInThePhotoAPI
+2021/04/17 14:26:08 Recieved call to TrainModel
+Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2021/04/17 14:26:31 Tensorflow? 2.4.1
+2021/04/17 14:26:31 Recieved input: ../../Backend/WhatsInThePhotoAPI/UserUploads/3-Person20-Ronald_Reagan/
+2021/04/17 14:26:31 Passing to folder_fixer
+2021/04/17 14:26:32 Returned to Arnold
+2021/04/17 14:26:32 Generating dataset - train
+2021/04/17 14:26:33 Generating dataset - validate
+2021/04/17 14:26:33 Doing augemntation
+2021/04/17 14:26:33 Calling make_model to... make model
+2021/04/17 14:26:33 Running Make_Model
+2021/04/17 14:26:36 Model Compliling
+2021/04/17 14:26:36 Model Fitting
+2021/04/17 14:29:20 Model saved at Scripts/models/3-ronald_reagan.h5

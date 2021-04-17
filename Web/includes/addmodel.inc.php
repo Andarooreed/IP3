@@ -52,11 +52,11 @@ if (isset($_POST["submit"])) {
   }
 
   //addModel($conn, $userId, $imageGroupId, $name, $location);
- // postImagesForTraining($target_dir);
+  postImagesForTraining($target_dir);
 
- // header("location: ../index.php?page=models");
+  header("location: ../index.php?page=models");
 
 
- // exit();
+  exit();
 
 }

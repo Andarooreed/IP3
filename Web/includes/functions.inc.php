@@ -229,6 +229,5 @@ function supplimentUserImageSet($simp_query, $simp_vol)
 	$json_array = json_decode($response, true);
 	session_start();
 	
-//	header("location: ../index.php?page=models");
-	//exit();
 }
+

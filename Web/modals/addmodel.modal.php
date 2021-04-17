@@ -13,6 +13,7 @@
 
       <label for="simppy"><b>Suppliment Image Set?</b></label>
       <input type="radio"  name="simp_vol" value=0 checked="checked"> Nah. <br/>
+      <input type="radio"  name="simp_vol" value=5> Test Val (5) <br/>
       <input type="radio"  name="simp_vol" value=100> +100 <br/>
       <input type="radio"  name="simp_vol" value=500> +500 <br/>
       <input type="radio"  name="simp_vol" value=1000> +1,000 <br/>
