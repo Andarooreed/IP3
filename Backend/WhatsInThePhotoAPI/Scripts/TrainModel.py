@@ -154,8 +154,7 @@ model.fit(
 name = working_dir["source_id"] + "-" + working_dir["source_label"] + ".h5"
 
 # Save it
-#model.save("../MachineModels/" + name)
-model.save("Scripts/models/" + name)
+model.save("MachineModels/" + name)
 
 
 logging.info(datetime.now().strftime("%Y/%m/%d %H:%M:%S") + " Model saved at "  + "Scripts/models/" + name)
