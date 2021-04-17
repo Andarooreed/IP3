@@ -12,7 +12,11 @@ if (isset($_POST["submit"])) {
   $model_name = str_replace(" ","_",$_POST["model_name"]);
   $user_name =  $_SESSION["username"];
   $user_id =   $_SESSION["user_id"]; // I think this is actually supposed to be a model id or something, I forget.
-  $target_dir = "../../Backend/WhatsInThePhotoAPI/UserUploads/" . strval($user_id) . "-" . $user_name . "-" . $model_name . "/" ;
+
+  // Set db entry
+  $model_id = addModel($conn, $user_id, $model_name);
+
+  $target_dir = "../../Backend/WhatsInThePhotoAPI/UserUploads/" . strval($model_id) . "-" . $user_name . "-" . $model_name . "/" ;
   mkdir($target_dir, 0777, true);
 
   // Get some other shit
@@ -23,7 +27,7 @@ if (isset($_POST["submit"])) {
   if ($simp_vol > 0){
     // Get images
     //supplimentUserImageSet($model_name, $simp_vol);
-    supplimentUserImageSet($model_name, 5);
+    supplimentUserImageSet($model_name, $simp_vol);
 
     // Open the save location and move each file to the target dir
     $source_folder = "../../Backend/WhatsInThePhotoAPI/UserUploads/simple_images/" . $model_name;
@@ -51,12 +55,10 @@ if (isset($_POST["submit"])) {
 
   }
 
-  //addModel($conn, $userId, $imageGroupId, $name, $location);
   postImagesForTraining($target_dir);
-
+   
   header("location: ../index.php?page=models");
-
-
+  
   exit();
 
 }

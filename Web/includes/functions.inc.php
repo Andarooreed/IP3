@@ -133,23 +133,52 @@ function loginUser($conn, $username, $pwd)
 }
 
 // Add empty model to database
-function addModel($conn, $userId, $imageGroupId, $name, $location)
+function addModel($conn, $userId, $name)
 {
+	// Stick the model details in
 	$sql = "INSERT INTO model (user_id, image_group_id, name, location) VALUES (?, ?, ?, ?);";
 
 	$stmt = mysqli_stmt_init($conn);
+	mysqli_stmt_prepare($stmt, $sql);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: ../index.php?page=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ssss", $userId, $imageGroupId, $name, $location);
+	
+	$t1 = "0";
+	$t2 = "NA";
+	mysqli_stmt_bind_param($stmt, "ssss", $userId, $t1, $name, $t2);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
-	header("location: ../index.php?page=models");
+
+//
+$sql = "Select max(model_id) as next_id From model;";
+$stmt = mysqli_stmt_init($conn);
+if (!mysqli_stmt_prepare($stmt, $sql)) {
+	//header("location: ../index.php?page=stmtfailed");
 	exit();
 }
+mysqli_stmt_execute($stmt);
 
+// "Get result" returns the results from a prepared statement
+$resultData = mysqli_stmt_get_result($stmt);
+
+if ($row = mysqli_fetch_assoc($resultData)) {
+	mysqli_stmt_close($stmt);
+	return $row["next_id"];
+} else {
+	$result = false;
+	mysqli_stmt_close($stmt);
+	return $result;
+
+}
+
+
+	mysqli_close($conn);
+
+}
+
+// DM this isn't accounting for duplicate names from other users
 function deleteModel($conn, $name) {
 	$sql = "DELETE FROM model WHERE name = '$name'";
 	
