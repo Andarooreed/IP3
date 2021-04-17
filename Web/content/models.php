@@ -12,7 +12,7 @@ $json_array = json_decode($response, true);
 
 ?>
 <div class="leftside-modelnav">
-    <h3><strong>Models</strong></h3>
+<h3 class="arrowpopup" onclick="tooltipOpen()" id="model-nav-title"><strong>Models</strong><span class="tooltiptext" id="tooltipdemo">Test</span></h3>
                 <?php
                 // When building the list of all available models, gather the first 3 image locations of each, encode the resultant array and pop it in a cookie
                 // Can then reference that cookie in Js to pull out the required locations... Hopefully
@@ -49,6 +49,19 @@ $json_array = json_decode($response, true);
                 ?>
                 
 
+    
+
+    <?php
+    foreach ($json_array as $model) {
+    ?>
+        <div class="display-models">
+            <input style="display: none;" type="radio" id="<?php echo $model['modelId'] ?>" name="select" value="<?php echo $model['name'] ?>">
+            <label for="<?php echo $model['modelId'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
+        </div>
+    <?php
+    }
+    ?>
+
     <div class="model-info">
         <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Create & Train a Model!</button>
     </div>
@@ -73,7 +86,7 @@ $json_array = json_decode($response, true);
 
         
     </div>
-    <button class="button-one">Delete Model</button>
+    <button onclick="document.getElementById('deletemodelmodal').style.display='block'" class="button-one">Delete Model</button>
     <button onclick="document.getElementById('runmodelmodal').style.display='block'" class="button-one">Run Model</button>
 
 

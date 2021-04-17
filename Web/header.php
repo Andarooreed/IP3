@@ -30,7 +30,7 @@ session_start();
     <!-- JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <title>What's in the box?</title>
+    <title>What's in the photo?</title>
 </head>
 
 <body>
@@ -38,8 +38,8 @@ session_start();
         <div class="wrapper">
             <ul>
                 <div class="nav-title">
-                    <li><a href="index.php?page=dashboard">
-                            <h3><strong><i class="fas fa-box-open"></i> &nbsp;&nbsp;&nbsp; What's in the box?</strong></h3>
+                    <li><a href="index.php?page=home">
+                            <h3><strong><i class="fas fa-box-open"></i> &nbsp;&nbsp;&nbsp; What's in the photo?</strong></h3>
                         </a></li>
                 </div>
                 <?php

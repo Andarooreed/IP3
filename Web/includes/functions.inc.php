@@ -150,6 +150,21 @@ function addModel($conn, $userId, $imageGroupId, $name, $location)
 	exit();
 }
 
+function deleteModel($conn, $name) {
+	$sql = "DELETE FROM model WHERE name = '$name'";
+	
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		header("location: ../index.php?page=stmtfailed");
+		exit();
+	}
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
+	header("location: ../index.php?page=models");
+	exit();
+}
+
 function postImageForPrediction($fileName, $modelName)
 {
 	$data = array('key1' => 'value1', 'key2' => 'value2');
@@ -173,7 +188,7 @@ function postImageForPrediction($fileName, $modelName)
 	$_SESSION["predictionLabel"] = $json_array['label'];
 	$_SESSION["predictionResult"] = $json_array['percentageResult'];
 
-	header("location: ../index.php?page=models");
+	header("location: ../index.php?page=runuploadsuccess");
 	exit();
 }
 
