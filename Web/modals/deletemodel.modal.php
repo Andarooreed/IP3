@@ -4,9 +4,9 @@
   <!-- Modal Content -->
   <form class="modal-content animate" method="POST" action="./includes/deletemodel.inc.php"  enctype="multipart/form-data">
     <div class="container">
-      <input name="model_name" id="model-modal-input-name" type="text" readonly hidden>
+      <input name="model_name" id="model-modal-input-name-delete" type="text" readonly hidden>
 
-      <h4>Are you sure that you want to delete this model?</h4>
+      <h4 style="margin-top: 15px;">Are you sure that you want to delete this model?</h4>
 
       <button type="submit" name="submit" class="button-one">Confirm</button>
     </div>

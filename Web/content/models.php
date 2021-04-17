@@ -12,7 +12,7 @@ $json_array = json_decode($response, true);
 
 ?>
 <div class="leftside-modelnav">
-<h3 class="arrowpopup" onclick="tooltipOpen()" id="model-nav-title"><strong>Models</strong><span class="tooltiptext" id="tooltipdemo">Test</span></h3>
+<h3 id="model-nav-title"><strong>Models</strong></h3>
                 <?php
                 // When building the list of all available models, gather the first 3 image locations of each, encode the resultant array and pop it in a cookie
                 // Can then reference that cookie in Js to pull out the required locations... Hopefully
@@ -48,20 +48,6 @@ $json_array = json_decode($response, true);
                 $tmp_model_array = $key_path;
                 ?>
                 
-
-    
-
-    <?php
-    foreach ($json_array as $model) {
-    ?>
-        <div class="display-models">
-            <input style="display: none;" type="radio" id="<?php echo $model['modelId'] ?>" name="select" value="<?php echo $model['name'] ?>">
-            <label for="<?php echo $model['modelId'] ?>" class="model-selector"><?php echo $model['name'] ?></label>
-        </div>
-    <?php
-    }
-    ?>
-
     <div class="model-info">
         <button onclick="document.getElementById('addmodelmodal').style.display='block'" class="button-one">Create & Train a Model!</button>
     </div>
@@ -115,32 +101,3 @@ $json_array = json_decode($response, true);
     ?>
 
 </div>
-
-
-<script>
-    $('input[name="select"]').on('change', function() {
-        $(".middle-box").show();
-        $(".prediction-outcome").hide();
-        $("#model-title").text($(this).val());
-        $("#model-modal-input-name").val($(this).val());
-        $("#model-description").text("You selected something"); 
-
-        // Decode PHP array
-
-       // PARSE OUT THE SHIT FROM THE JSON_ENCODED THING AND SET THE 3 BOXES TO THE IMAGE ELEMENT BASED ON MODEL ID
-
-       // var images = JSON.parse($("#model_image_array"));
-       var models = JSON.parse($("#model_image_array").text());
-       var target_model_id = $(this).attr('id');
-      
-       $("#user_model_img_1").attr("src", models[target_model_id][0]);
-       $("#user_model_img_2").attr("src", models[target_model_id][1]);
-       $("#user_model_img_3").attr("src", models[target_model_id][2]);
-
-    });
-
-
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-</script>
