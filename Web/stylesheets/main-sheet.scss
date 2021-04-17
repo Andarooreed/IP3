@@ -219,3 +219,38 @@ input[type="radio"]:checked+label {
     width: 60%;
     height: 90%;
 }
+
+.arrowpopup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.arrowpopup .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #856;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 9px;
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -85px;
+}
+
+.arrowpopup .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #856 transparent transparent transparent;
+}
+
+.arrowpopup .show {
+    visibility: visible;
+}

@@ -12,7 +12,9 @@ $json_array = json_decode($response, true);
 
 ?>
 <div class="leftside-modelnav">
-    <h3><strong>Models</strong></h3>
+
+    <h3 class="arrowpopup" onclick="tooltipOpen()" id="model-nav-title"><strong>Models</strong><span class="tooltiptext" id="tooltipdemo">Test</span></h3>
+
     <?php
     foreach ($json_array as $model) {
     ?>
@@ -38,7 +40,7 @@ $json_array = json_decode($response, true);
         <div class="content-image-placeholder"></div>
         <div class="content-image-placeholder"></div>
     </div>
-    <button class="button-one">Delete Model</button>
+    <button onclick="document.getElementById('deletemodelmodal').style.display='block'" class="button-one">Delete Model</button>
     <button onclick="document.getElementById('runmodelmodal').style.display='block'" class="button-one">Run Model</button>
 
 
