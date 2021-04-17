@@ -7,7 +7,7 @@ namespace WhatsInThePhotoAPI.Scripts
     public static class PythonScriptEngine
     {
         private static readonly string _pythonExePath =
-            @"C:\Users\danie\AppData\Local\Programs\Python\Python38\python.exe";
+            @"C:\Users\andy\AppData\Local\Programs\Python\Python38\python.exe";
 
         // <summary> Execute Python script file </summary>
         /// <param name="command">Python script file and input parameter(s)</param>

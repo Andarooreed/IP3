@@ -150,8 +150,8 @@ function addModel($conn, $userId, $imageGroupId, $name, $location)
 	exit();
 }
 
-function deleteModel($conn, $name) {
-	$sql = "DELETE FROM model WHERE name = '$name'";
+function deleteModel($conn, $name, $userId) {
+	$sql = "DELETE FROM model WHERE name = '$name' AND user_id = '$userId'";
 	
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
