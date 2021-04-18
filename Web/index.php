@@ -5,6 +5,7 @@ include_once 'modals/signup.modal.php';
 include_once 'modals/addmodel.modal.php';
 include_once 'modals/deletemodel.modal.php';
 include_once 'modals/runmodel.modal.php';
+include_once 'modals/about.modal.php';
 include_once 'notifications/auth.notifications.php';
 include_once 'includes/functions.inc.php';
 ?>
@@ -21,7 +22,7 @@ if (isset($_SESSION["user_id"])) { ?>
             <a href="index.php?page=models"><i class="fas fa-images"></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;Models</span></a>
         </div>
         <div class="leftside-nav-footer">
-            <a href="#"><i class="fas fa-info-circle"></i></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;About</span></a>
+            <a onclick="document.getElementById('aboutmodal').style.display='block'"><i class="fas fa-info-circle"></i></i><span class="leftside-nav-wording" style="display: none;">&nbsp;&nbsp;&nbsp;About</span></a>
         </div>
     </div>
     <div id="main">

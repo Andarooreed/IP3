@@ -56,7 +56,7 @@ $json_array = json_decode($response, true);
 </div>
 
 <div class="middle-box" style="display:none;">
-    <i class="fas fa-images fa-5x"></i>
+    <i class="fas fa-images fa-5x" style="margin-bottom: 10px;"></i>
     <h3 id="model-title">Select a model from the side menu</h3>
     <p id="model_image_array" hidden> <?php echo $model_cookie; ?> </p>
     <div class="model-contents-placeholder">
