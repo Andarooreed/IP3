@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace WhatsInThePhotoAPI.Scripts
 {
     /// <summary> C# Python Interpreter, executes python scripts </summary>
     public static class PythonScriptEngine
     {
-        private static readonly string _pythonExePath =
-            @"C:\Users\andy\AppData\Local\Programs\Python\Python38\python.exe";
-
+      ///  private static readonly string _pythonExePath =
+        //    @"C:\Users\andy\AppData\Local\Programs\Python\Python38\python.exe";
+        private static readonly string _pythonExePath = 
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Programs","Python","Python38","python.exe");
         // <summary> Execute Python script file </summary>
         /// <param name="command">Python script file and input parameter(s)</param>
         /// <returns> Output text result</returns>
