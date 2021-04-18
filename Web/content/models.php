@@ -56,8 +56,7 @@ $json_array = json_decode($response, true);
 </div>
 
 <div class="middle-box" style="display:none;">
-
-    <div class="image-placeholder"></div>
+    <i class="fas fa-images fa-5x"></i>
     <h3 id="model-title">Select a model from the side menu</h3>
     <p id="model_image_array" hidden> <?php echo $model_cookie; ?> </p>
     <div class="model-contents-placeholder">
@@ -77,8 +76,10 @@ $json_array = json_decode($response, true);
     <button onclick="document.getElementById('runmodelmodal').style.display='block'" id="run-model-btn" class="button-one">Run Model</button>
 
     <div class="information">
-        <p>A model is a representation of an object!<br>
-            Click on the 'Create and train a model!' button on the left hand side to make your own unique model.<br><br>
+        <p>A model is a trained algorithm made to recognise patterns within a set of images.
+            For example: the 3035-cup.h5 is a model that is pre-trained to understand what a tea cup looks like.
+            If you select this and upload a picture, it will allow you to see how likely it is that a tea cup is contained within that image.
+            Click on the 'Create & train a model!' button on the left hand side to make your own unique model.<br><br>
             <strong>Hover over elements to learn a little about them.</strong>
         </p>
     </div>

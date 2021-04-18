@@ -40,7 +40,7 @@ $("#create-model-btn").hover(
     function() {
         var $infobox = $(".information"); // caching $(this)
         $infobox.data('defaultText', $infobox.text());
-        $infobox.text("Click here to train your own model!");
+        $infobox.text("Click here to train your own model! You will need to provide a model name that should represent what the model will be trained to recognise. Then either upload your own photo set, or you can select one of 5 options that make the system automatically download an image set of the amount you have selected. This uses the name you have given the model to search Google for the images. Training a model takes time so go make yourself a cup of coffee (or 10) while you wait. Once the model has completed training, it will appear in the list to the left.");
     },
     function() {
         var $infobox = $(".information"); // caching $(this)
@@ -52,7 +52,7 @@ $(".content-image-placeholder").hover(
     function() {
         var $infobox = $(".information"); // caching $(this)
         $infobox.data('defaultText', $infobox.text());
-        $infobox.text("These images represent a few photos contained within your model");
+        $infobox.text("These images represent the first three images contained within this model.");
     },
     function() {
         var $infobox = $(".information"); // caching $(this)
