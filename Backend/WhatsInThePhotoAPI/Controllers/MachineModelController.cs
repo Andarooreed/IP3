@@ -42,12 +42,12 @@ namespace WhatsInThePhotoAPI.Controllers
 
         // GET: api/<MachineModelController>
         [HttpGet]
-        public IEnumerable<MachineModel> GetAllModels()
+        public IEnumerable<MachineModel> GetAllModels(string userId)
         {
             var context =
                 HttpContext.RequestServices.GetService(typeof(MachineModelContext)) as MachineModelContext;
 
-            return context.GetAllMachineModels();
+            return context.GetAllMachineModels(userId);
         }
 
 
@@ -59,8 +59,9 @@ namespace WhatsInThePhotoAPI.Controllers
         {
             const string trainingScriptLocation = @"Scripts\TrainModel.py";
 
-           string combinedCommand = $"{trainingScriptLocation} {folderName} ";
-            
+           string combinedCommand = $"{trainingScriptLocation} {folderName}";
+
+
 
             string returnValue = PythonScriptEngine.ExecutePythonScript(combinedCommand);
 
@@ -155,13 +156,14 @@ namespace WhatsInThePhotoAPI.Controllers
 
         public string ConnectionString { get; set; }
 
-        public List<MachineModel> GetAllMachineModels()
+        public List<MachineModel> GetAllMachineModels(string userId)
         {
             List<MachineModel> list = new();
 
             using MySqlConnection conn = GetConnection();
             conn.Open();
-            MySqlCommand cmd = new("Select * From model", conn);
+            string query = "Select * From model where user_id = 0 or user_id = " + userId;
+            MySqlCommand cmd = new(query, conn);
 
             using MySqlDataReader? reader = cmd.ExecuteReader();
             while (reader.Read())
