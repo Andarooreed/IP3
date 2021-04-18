@@ -135,46 +135,47 @@ function loginUser($conn, $username, $pwd)
 // Add empty model to database
 function addModel($conn, $userId, $name)
 {
+	$stmt = mysqli_stmt_init($conn);
+	$next_id = "";
+	// Reach forward and get the models id
+	$sql = "Select max(model_id) as last_id From model;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		//header("location: ../index.php?page=stmtfailed");
+		exit();
+	}
+	mysqli_stmt_execute($stmt);
+
+	$resultData = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($resultData)) {
+	//
+		$next_id = strval(intval($row["last_id"]) + 1);
+	} else {
+		$result = false;
+		mysqli_stmt_close($stmt);
+		return $result;
+	}
+
 	// Stick the model details in
 	$sql = "INSERT INTO model (user_id, image_group_id, name, location) VALUES (?, ?, ?, ?);";
-
-	$stmt = mysqli_stmt_init($conn);
+	
 	mysqli_stmt_prepare($stmt, $sql);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../index.php?page=stmtfailed");
+	//	header("location: ../index.php?page=stmtfailed");
 		exit();
 	}
 	
-	$t1 = "0";
-	$t2 = "NA";
-	mysqli_stmt_bind_param($stmt, "ssss", $userId, $t1, $name, $t2);
+	$model_name_with_stuff = $next_id . "-" . $name . ".h5";
+	$img_group_id = "0"; 	// Redundant
+	$location = "NA";		// Redundant
+
+	mysqli_stmt_bind_param($stmt, "ssss", $userId, $img_group_id, $model_name_with_stuff, $location);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-
-//
-$sql = "Select max(model_id) as next_id From model;";
-$stmt = mysqli_stmt_init($conn);
-if (!mysqli_stmt_prepare($stmt, $sql)) {
-	//header("location: ../index.php?page=stmtfailed");
-	exit();
-}
-mysqli_stmt_execute($stmt);
-
-// "Get result" returns the results from a prepared statement
-$resultData = mysqli_stmt_get_result($stmt);
-
-if ($row = mysqli_fetch_assoc($resultData)) {
-	mysqli_stmt_close($stmt);
-	return $row["next_id"];
-} else {
-	$result = false;
-	mysqli_stmt_close($stmt);
-	return $result;
-
-}
-
-
 	mysqli_close($conn);
+
+	return $next_id;
 
 }
 
