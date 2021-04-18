@@ -76,7 +76,7 @@ $("#delete-model-btn").hover(
     function() {
         var $infobox = $(".information"); // caching $(this)
         $infobox.data('defaultText', $infobox.text());
-        $infobox.text("Want rid of your model? Click here to get rid of it. Be warned though, deleted models are not recoverable.");
+        $infobox.text("Want rid of your model? Click here to delete it. Be warned though, deleted models are not recoverable.");
     },
     function() {
         var $infobox = $(".information"); // caching $(this)
