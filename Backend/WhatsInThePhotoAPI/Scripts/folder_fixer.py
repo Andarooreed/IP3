@@ -80,7 +80,8 @@ def folder_fixer(source_location):
         "test_path":  target_folder_path + "/test"
         ,"train_path": target_folder_path + "/train"
         ,"source_full": source_folder
-        ,"source_label": source_folder_parts[2].lower()
+        # ,"source_label": source_folder_parts[2].lower() -- cant remember why this is forced to lower and it's causin me issues
+        ,"source_label": source_folder_parts[2]
         ,"source_id": str(source_folder_parts[0])
         ,"source_user": source_folder_parts[1].lower()
 

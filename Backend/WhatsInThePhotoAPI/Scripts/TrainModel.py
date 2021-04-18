@@ -29,6 +29,7 @@ logging.info(datetime.now().strftime("%Y/%m/%d %H:%M:%S") + " Tensorflow? " + tf
 try:
     len(sys.argv[1])
     source_folder = sys.argv[1].replace("XXX","/")
+
  
 except:
     # Load the default test data if testing set to true, otherwise exit
