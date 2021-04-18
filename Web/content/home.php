@@ -13,7 +13,7 @@
 		TensorFlow is an open source framework for ML that uses the Python programming language. It makes getting into ML accessible to everyone and easier than ever!<br>
 		Since TensorFlow is open source, it has a wide array of libraries available to help you achieve your goals. What's in the photo? Makes use of this by developing it's core system on the Keras library
 		<br><br>
-		<a href="https://www.tensorflow.org/">To read more on TensorFlow you can information on their official website</a><br><br>
+		<a href="https://www.tensorflow.org/">To read more on TensorFlow you can find information on their official website</a><br><br>
 		<strong><U>Keras</U></strong><br>
 	</p>
 </div>
