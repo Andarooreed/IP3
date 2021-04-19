@@ -21,22 +21,50 @@ $json_array = json_decode($response, true);
     $root_path = "..\\Backend\\WhatsInThePhotoAPI\\UserUploads\\";
     foreach ($json_array as $model) {
         $source_folder = strval($model['modelId']) . "-" . $_SESSION["username"] . "-" . explode(".",explode("-",$model['name'])[1])[0];
+        $pretrained_folder = strval($model['modelId']) . "-PRE_TRAINED-" . explode(".",explode("-",$model['name'])[1])[0];
 
-        if (isset($source_folder)) {
+        
+            // Pull down all UserUpload folders
+            $upload_folder = glob($root_path . "\\*");
+            foreach ($upload_folder as $f){
+                // Action if global folder
+                if (strpos($f,'PRE_TRAINED') !== false){
 
-            // GLOB
-            $files = glob($root_path . $source_folder . "\\*");
-            $image_paths = [];
-            $cnt = 0;
-            foreach ($files as $curr_file) {
-                if ($cnt++ > 2) {
-                    break;                }
-                // array_push($key_path, [$model['modelId'], $curr_file]);
-               // array_push($image_paths, $curr_file);
-                array_push($image_paths, $curr_file);
-            }
-            $key_path[$model['modelId']] = $image_paths;
-            //$key_path[$model['modelId']] = $source_folder;
+                    // Do Stuff
+                    $files = glob($root_path . $pretrained_folder . "\\*");
+                    $image_paths = [];
+                    $cnt = 0;
+                    foreach ($files as $curr_file) {
+                        if ($cnt++ > 2) {
+                            break;   
+                           }
+                        array_push($image_paths, $curr_file);
+                    }
+                    // Don't add empty arrays
+                    if(!empty($image_paths)){
+                        $key_path[$model['modelId']] = $image_paths;
+                        //$key_path[$model['modelId']] = $source_folder;
+                    }
+
+                } else {
+                    if (isset($source_folder)) {
+                        // GLOB
+                        $files = glob($root_path . $source_folder . "\\*");
+                        $image_paths = [];
+                        $cnt = 0;
+                        foreach ($files as $curr_file) {
+                            if ($cnt++ > 2) {
+                                break;   
+                            }
+                            array_push($image_paths, $curr_file);
+                        }
+                        // Don't overwrite existing keys
+                        if (!array_key_exists($model['modelId'],$key_path)){
+                            $key_path[$model['modelId']] = $image_paths;
+                            //$key_path[$model['modelId']] = $source_folder;
+                        }
+                }
+            } 
         }
 
     ?>
