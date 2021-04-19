@@ -52,7 +52,11 @@ $(".content-image-placeholder").hover(
     function() {
         var $infobox = $(".information"); // caching $(this)
         $infobox.data('defaultText', $infobox.text());
-        $infobox.text("These images represent the first three images contained within this model.");
+        $infobox.text("Using a large range of images helps train the model to recognise that object in the future" + 
+                        "(if you’d only seen one cup in your entire life you’d have trouble identifying them too!)" +
+                        " If you don’t think you have enough images of your own, don’t worry, our image-downloading" +
+                        " bot can find extra images for you online! (you can even choose how many photos you want it to add.)"
+        );
     },
     function() {
         var $infobox = $(".information"); // caching $(this)
@@ -64,7 +68,10 @@ $("#run-model-btn").hover(
     function() {
         var $infobox = $(".information"); // caching $(this)
         $infobox.data('defaultText', $infobox.text());
-        $infobox.text("Click here to run your model. This will allow you to upload an image and run it through our machine learning sytem! It will present you with a percentage output of how similar your image is to the item the model has been trained on");
+        $infobox.text("Click here to test your model! Choose an image to test with and the model will compare " + 
+                        "it to the image set you trained it with. Then it will return an analysis of how similar" + 
+                        " your test image is to the object it’s trained to recognise."
+        );
     },
     function() {
         var $infobox = $(".information"); // caching $(this)

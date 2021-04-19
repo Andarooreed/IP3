@@ -110,6 +110,7 @@ $json_array = json_decode($response, true);
             For example: the 3035-cup.h5 is a model that is pre-trained to understand what a tea cup looks like.
             If you select this and upload a picture, it will allow you to see how likely it is that a tea cup is contained within that image.
             Click on the 'Create & train a model!' button on the left hand side to make your own unique model.<br><br>
+
             <strong>Hover over elements to learn a little about them.</strong>
         </p>
     </div>
