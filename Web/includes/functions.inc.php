@@ -261,7 +261,8 @@ function supplimentUserImageSet($simp_query, $simp_vol)
 		"http" => array(
 			'header'  => "Content-type: application/json; charset=utf-8",
 			'method'  => 'POST',
-			'content' => http_build_query($data)
+			'content' => http_build_query($data),
+			'timeout' => 99999999,
 		)
 	);
 
