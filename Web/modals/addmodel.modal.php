@@ -5,7 +5,7 @@
   <form class="modal-content animate" action="includes/addmodel.inc.php" method="post" enctype='multipart/form-data'>
     <div class="container">
       <label for="model_name"><b>Model Name (What's in the photos?)</b></label>
-      <input type="text" placeholder="Model name" name="model_name">
+      <input type="text" placeholder="Model name" name="model_name" required>
 
       <!-- Enable form to select multiple items -->
       <label for="model_location"><b>Training FIles</b></label>
@@ -13,7 +13,7 @@
 
       <label for="simppy"><b>Suppliment Image Set?</b></label>
       <input type="radio"  name="simp_vol" value=0 checked="checked"> Nah. <br/>
-      <input type="radio"  name="simp_vol" value=5> Test Val (5) <br/>
+      <input type="radio"  name="simp_vol" value=5> +5 <br/>
       <input type="radio"  name="simp_vol" value=100> +100 <br/>
       <input type="radio"  name="simp_vol" value=500> +500 <br/>
       <input type="radio"  name="simp_vol" value=1000> +1,000 <br/>
