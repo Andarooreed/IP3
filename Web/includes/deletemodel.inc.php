@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (isset($_POST["submit"])) {
 
@@ -12,6 +13,6 @@ if (isset($_POST["submit"])) {
   deleteModel($conn, $name, $userId);
 
   header("location: ../index.php?page=models");
-    exit();
+  exit();
 
 }

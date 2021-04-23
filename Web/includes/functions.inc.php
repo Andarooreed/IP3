@@ -190,6 +190,7 @@ function deleteModel($conn, $name, $userId) {
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
+	return $sql;
 	header("location: ../index.php?page=models");
 	exit();
 }
