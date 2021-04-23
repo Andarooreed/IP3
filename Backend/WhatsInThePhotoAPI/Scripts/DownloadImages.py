@@ -23,6 +23,11 @@ try:
 except:
     limit = 5
 
+
+# Bandwith issues with over 40 images, limiting... limit for demonstration
+if limit > 40:
+    limit = 40
+
 print(os.getcwd())
 os.chdir("UserUploads")
 print(os.getcwd())
